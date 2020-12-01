@@ -1,3 +1,3 @@
 export interface Hello {
-    content: string;
-  }
+  id : number
+}
