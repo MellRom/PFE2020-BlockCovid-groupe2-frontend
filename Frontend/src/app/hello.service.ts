@@ -17,6 +17,6 @@ export class HelloService {
 
 
     getIdHello() {
-      return this.http.get<Hello[]>(this.apiURL);
+      return this.http.get<Hello>(this.apiURL);
     }
 }

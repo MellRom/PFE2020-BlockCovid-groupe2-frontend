@@ -12,15 +12,18 @@ import {Hello} from '../hello';
 })
 export class HelloComponent implements OnInit {
 
-  hello: Hello[];
+  hello: number; 
 
   constructor(private helloService : HelloService) { }
 
   ngOnInit() {
-    return this.helloService.getIdHello().subscribe( (data :Hello[]) =>{
-      console.log(data);
-      this.hello= data;
+    return this.helloService.getIdHello().subscribe( data =>{
+      console.log(typeof(data.id));
+      this.hello= data.id;
+     // console.log(this.hello);
     } );
   }
+
+
 
 }
