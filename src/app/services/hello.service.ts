@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
-import { Hello } from './hello'
+import { Hello } from '../models/hello'
 import { Observable } from 'rxjs';
-
+import { environment } from '../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
 })
 export class HelloService {
 
-  apiURL = 'http://localhost:8080/hello'
+  apiURL = environment.api_url + '/hello'
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

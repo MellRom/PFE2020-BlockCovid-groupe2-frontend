@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {HelloService} from '../hello.service'
-import {Hello} from '../hello';
+import {HelloService} from '../../services/hello.service'
+import {Hello} from '../../models/hello';
 
 @Component({
   selector: 'app-hello',
@@ -8,7 +8,9 @@ import {Hello} from '../hello';
   styleUrls: ['./hello.component.css']
 })
 export class HelloComponent implements OnInit {
-  hello: Hello; 
+  hello: Hello = {
+    id: 0
+  }; 
   qrdata: string = null;
   id_hello: number = null;
 
