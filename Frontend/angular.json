@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "BlockCovid"
+  "defaultProject": "BlockCovid",
+  "cli": {
+    "analytics": false
+  }
 }

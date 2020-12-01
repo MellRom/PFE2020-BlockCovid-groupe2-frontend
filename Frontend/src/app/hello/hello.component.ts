@@ -12,14 +12,14 @@ import {Hello} from '../hello';
 })
 export class HelloComponent implements OnInit {
 
-  hello: any;
+  hello: Hello[];
 
   constructor(private helloService : HelloService) { }
 
   ngOnInit() {
-    return this.helloService.getIdHello().subscribe( data =>{
+    return this.helloService.getIdHello().subscribe( (data :Hello[]) =>{
       console.log(data);
-      this.hello = data;
+      this.hello= data;
     } );
   }
 
