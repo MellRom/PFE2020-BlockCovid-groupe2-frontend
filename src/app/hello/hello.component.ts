@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
-
 import {HelloService} from '../hello.service'
 import {Hello} from '../hello';
 
@@ -12,16 +10,19 @@ import {Hello} from '../hello';
 })
 export class HelloComponent implements OnInit {
 
-  hello: number; 
+  public hello = new Hello(); 
 
   constructor(private helloService : HelloService) { }
 
-  ngOnInit() {
-    return this.helloService.getIdHello().subscribe( data =>{
-      console.log(typeof(data.id));
-      this.hello= data.id;
-     // console.log(this.hello);
-    } );
+  ngOnInit(): void {
+    this.getHello()
+  }
+
+  getHello(): void{
+    this.helloService.getHello()
+    .subscribe((data) => {
+      this.hello = data;
+    })
   }
 
 

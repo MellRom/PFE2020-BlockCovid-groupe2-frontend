@@ -16,7 +16,7 @@ export class HelloService {
     private messageService: MessageService) { }
 
 
-    getIdHello() {
+    getHello() {
       return this.http.get<Hello>(this.apiURL);
     }
 }
