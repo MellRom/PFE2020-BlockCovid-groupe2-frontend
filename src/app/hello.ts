@@ -1,3 +1,3 @@
-export class Hello {
+export interface Hello {
   id : number;
 }

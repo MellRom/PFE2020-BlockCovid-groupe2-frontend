@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
 
 import { Hello } from './hello'
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -12,11 +13,15 @@ export class HelloService {
 
   apiURL = 'http://localhost:8080/hello'
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+  
   constructor( private http: HttpClient,
     private messageService: MessageService) { }
 
 
-    getHello() {
+    getHello(): Observable<Hello> {
       return this.http.get<Hello>(this.apiURL);
     }
 }

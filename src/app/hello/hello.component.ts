@@ -10,19 +10,17 @@ import {Hello} from '../hello';
 })
 export class HelloComponent implements OnInit {
 
-  public hello = new Hello(); 
+  hello: Hello; 
 
   constructor(private helloService : HelloService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getHello()
   }
 
   getHello(): void{
     this.helloService.getHello()
-    .subscribe((data) => {
-      this.hello = data;
-    })
+    .subscribe(hello => this.hello = hello);
   }
 
 
