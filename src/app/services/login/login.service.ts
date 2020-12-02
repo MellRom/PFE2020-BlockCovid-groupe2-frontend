@@ -20,6 +20,6 @@ export class LoginService {
     private messageService: MessageService) { }
 
   login(username, password) {
-    return this.http.post<any>(environment.api_url + '/connexion', { username, password })
+    return this.http.post<any>(environment.api_url + '/connexion', {"login": username, "password": password })
   }
 }
