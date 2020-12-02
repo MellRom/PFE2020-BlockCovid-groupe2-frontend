@@ -11,7 +11,6 @@
     "post install": "ng build  --aot --target=production"
   },
   "private": true,
-  
   "dependencies": {
     "@angular/animations": "~11.0.1",
     "@angular/cli": "~11.0.2",
@@ -25,6 +24,7 @@
     "@angular/router": "~11.0.1",
     "angularx-qrcode": "^1.6.4",
     "express": "^4.17.1",
+    "font-awesome": "^4.7.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "typescript": "~4.0.2",
