@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './components/hello/hello.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { ConnexionComponent } from './components/connexion/connexion.component';
+import { InscriptionComponent } from './components/inscription/inscription.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HelloComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +23,8 @@ import { ConnexionComponent } from './components/connexion/connexion.component';
     QRCodeModule,
     RouterModule.forRoot([
       { path: 'hello', component: HelloComponent},
-      { path: 'connexion', component: ConnexionComponent}
+      { path: 'connexion', component: ConnexionComponent},
+      { path: 'inscription', component: InscriptionComponent}
     ])
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
