@@ -10,8 +10,6 @@ import { Observable } from 'rxjs';
 })
 export class HelloService {
 
-  apiURL = environment.api_url + '/hello'
-
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -20,6 +18,6 @@ export class HelloService {
     private messageService: MessageService) { }
 
     getHello(): Observable<Hello> {
-      return this.http.get<Hello>(this.apiURL);
+      return this.http.get<Hello>(environment.api_url + '/hello');
     }
 }

@@ -11,7 +11,6 @@ import { IWebUser} from 'src/app/models/webUser'
 })
 export class LoginService {
 
-  apiURL = environment.api_url + '/connexion'
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -21,6 +20,6 @@ export class LoginService {
     private messageService: MessageService) { }
 
     getUser(): Observable<IWebUser> {
-      return this.http.get<IWebUser>(this.apiURL);
+      return this.http.get<IWebUser>(environment.api_url + '/connexion');
     }
 }
