@@ -22,4 +22,8 @@ export class LoginService {
   login(username, password) {
     return this.http.post<any>(environment.api_url + '/connexion', {"login": username, "password": password })
   }
+  inscription(login, name, role, password, adress) {
+    console.log(login);
+    return this.http.post<any>(environment.api_url + '/inscription', {"login": login, "password": password, "role": role, "name": name, "adress": adress })
+  }
 }
