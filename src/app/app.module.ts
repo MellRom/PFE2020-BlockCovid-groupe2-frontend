@@ -6,11 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './components/hello/hello.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { ConnexionComponent } from './components/connexion/connexion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HelloComponent
+    HelloComponent,
+    ConnexionComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +20,8 @@ import { QRCodeModule } from 'angularx-qrcode';
     FormsModule,
     QRCodeModule,
     RouterModule.forRoot([
-      { path: 'hello', component: HelloComponent }
+      { path: 'hello', component: HelloComponent},
+      { path: 'connexion', component: ConnexionComponent}
     ])
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
