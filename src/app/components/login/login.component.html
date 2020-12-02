@@ -2,21 +2,19 @@
   <div id="formContent">
     <!-- Tabs Titles -->
 
-    <!-- Icon -->
     <div class="fadeIn first">
       <img style="width: 75px;height: auto;" src="../../assets/images/connexionImage.jpg" id="icon" alt="User Icon" />
     </div>
 
-    <!-- Login Form -->
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <input type="text" id="username" class="fadeIn second" name="username" placeholder="Pseudo">
+        <input type="text" id="username" class="fadeIn second" formControlName="username" placeholder="Pseudo" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
         <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
           <div *ngIf="f.Username.errors.required">Username is required</div>
         </div>
       </div>
       <div class="form-group">
-        <input type="text" id="password" class="fadeIn third" name="password" placeholder="Mot de passe">
+        <input type="text" id="password" class="fadeIn third" formControlName="password" placeholder="Mot de passe" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
           <div *ngIf="f.password.errors.required">Password is required</div>
         </div>
@@ -26,7 +24,6 @@
       </div>
     </form>
     
-    <!-- Remind Passowrd -->
     <div id="formFooter">
       <a class="underlineHover" routerLink="/inscription">Pas de compte? Inscrivez-vous</a>
     </div>

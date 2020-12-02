@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { MessageService } from '../message/message.service';
-import { IWebUser} from 'src/app/models/webUser'
+import { IWebUser } from 'src/app/models/webUser'
 
 
 @Injectable({
@@ -15,11 +15,11 @@ export class LoginService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  
-  constructor( private http: HttpClient,
+
+  constructor(private http: HttpClient,
     private messageService: MessageService) { }
 
-    getUser(): Observable<IWebUser> {
-      return this.http.get<IWebUser>(environment.api_url + '/connexion');
-    }
+  login(username, password) {
+    return this.http.post<any>(environment.api_url + '/connexion', { username, password })
+  }
 }
