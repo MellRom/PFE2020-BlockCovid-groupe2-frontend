@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { Component, NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { Component, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -8,27 +8,31 @@ import { HelloComponent } from './components/hello/hello.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { LoginComponent } from './components/login/login.component';
 import { InscriptionComponent } from './components/inscription/inscription.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HelloComponent,
     LoginComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     QRCodeModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: 'hello', component: HelloComponent},
-      { path: 'login', component: LoginComponent},
-      { path: 'inscription', component: InscriptionComponent}
+      { path: 'hello', component: HelloComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'inscription', component: InscriptionComponent }
 
     ])
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })
