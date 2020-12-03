@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api/api.service'
+import { IPlace } from 'src/app/models/place'
 
 
 @Component({
@@ -8,42 +9,32 @@ import { ApiService } from 'src/app/services/api/api.service'
   styleUrls: ['./establishment.component.css']
 })
 export class EstablishmentComponent implements OnInit {
-
+  table = null;
+  places: IPlace[];
+  qrdata: string = null;
   constructor(private apiService: ApiService) { }
-  
+
   ngOnInit(): void {
   }
 
-  showPlace(){
-    console.log("showplace")
+  showPlace() {
     this.apiService.listPlace(1)
-    .subscribe(
-      data => {
-        console.log(data);
-        let table = document.querySelector("table");
-        this.generateTableHead(table, data);
-      },
-      error => {
-        console.log("error listing place")
-      }
-    )
+      .subscribe(
+        data => {
+          console.log(data);
+          this.places = data
+          console.log(this.places);
+        },
+        error => {
+          console.log("error listing place")
+        }
+      )
+
   }
 
-  generateTableHead(table, data) {
-    let thead = table.createTHead();
-    let row = thead.insertRow();
-    for (let key of data) {
-      let th = document.createElement("th");
-      let text = document.createTextNode(key.name);
-      let text2= document.createTextNode(" : ");
-      let text3 = document.createTextNode(key.description);
-      th.appendChild(text);
-      th.appendChild(text2);
-      th.appendChild(text3);
-      row.appendChild(th);
-    }
+  genereateQrCode(id, name, description): void {
+    this.qrdata = "id:" + id + ", name:" + name + ", description:" + description;
   }
-
 }
 
 /* TEST BD
