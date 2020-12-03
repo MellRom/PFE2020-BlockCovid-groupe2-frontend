@@ -13,6 +13,7 @@ import { DoctorComponent } from './components/doctor/doctor.component';
 import { EstablishmentComponent } from './components/establishment/establishment.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AddPlaceComponent } from './components/establishment/add-place/add-place.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
   { path: 'hello', component: HelloComponent },
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes
-    )
+    ),
+    NgbModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

@@ -5,22 +5,52 @@
         </div>
         <div class="col-md-3">
             <button class="btn btn-primary" routerLink="/ajout-lieu">Ajouter un lieu</button>
-        </div>    
+        </div>
     </div>
     <br />
-   <table class="table table-striped">
-       <tr>
-           <th>Id lieu</th>
-           <th>Nom</th>
-           <th>Description</th>
-       </tr>
-       <tr *ngFor="let place of places">
-            <th>{{place.place_id}}</th>
-            <th>{{place.name}}</th>
-            <th>{{place.description}}</th>
-            <th (click)="genereateQrCode(place.place_id, place.name, place.description)"></th>
-       </tr>
-   </table>
-    
-</div>
 
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table *ngIf=(showTable) class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Description</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let place of places">
+                <th scope="row">{{place.place_id}}</th>
+                <td>{{place.name}}</td>
+                <td>{{place.description}}</td>
+                <td (click)="genereateQrCode(place.place_id, place.name, place.description)">
+                    <ng-template #popContent><qrcode [qrdata]="qrdata"[size]="124" [level]="'M'"></qrcode></ng-template>
+                    <button class="btn btn-primary" placement="right" [ngbPopover]="popContent" popoverTitle="QR Code pour {{place.name}}">Générer Code QR
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
