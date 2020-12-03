@@ -42,8 +42,15 @@ export class LoginComponent implements OnInit {
         if(data.role==='doctor'){
           this.router.navigate(['/doctor'])
         }
+        if(data.role === 'establishement'){
+          console.log("ça marche");
+          console.log(data.user_id);
+          data.id
+          //this.router.navigate(['/establishment'])
+        }
       },
       error => {
+        console.log(error);
         this.f.clear;
       }
     )
