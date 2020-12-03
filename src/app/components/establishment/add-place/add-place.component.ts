@@ -1,15 +1,46 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api/api.service'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-add-place',
+  selector: 'app-ajout-place',
   templateUrl: './add-place.component.html',
   styleUrls: ['./add-place.component.css']
 })
 export class AddPlaceComponent implements OnInit {
-
-  constructor() { }
+  addPlaceForm: FormGroup;
+  submitted = false;
+  constructor(private formBuilder: FormBuilder,
+    private apiService: ApiService,
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.addPlaceForm = this.formBuilder.group({
+      placeName: ['', Validators.required],
+      placeDescription: ['', Validators.required]
+    });
+  }
+
+  get f() { return this.addPlaceForm.controls; }
+
+  onSubmitPlace() {
+    this.submitted = true;
+
+    if (this.addPlaceForm.invalid) {
+      return;
+    }
+
+    this.apiService.login(this.f.placeName.value, this.f.placeDescription.value)
+      .subscribe(
+        data => {
+          console.log("OKKKKK")
+        },
+        error => {
+          console.log(error);
+          this.f.clear;
+        }
+      )
   }
 
 }

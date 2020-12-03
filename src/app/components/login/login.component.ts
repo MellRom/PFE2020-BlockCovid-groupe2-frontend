@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IWebUser } from 'src/app/models/webUser';
-import { ApiService } from 'src/app/services/login/api.service'
+import { ApiService } from 'src/app/services/api/api.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         if(data.role==='doctor'){
           this.router.navigate(['/doctor'])
         }
-        if(data.role === 'establishement'){
+        if(data.role === 'establishment'){
           console.log("ça marche");
           console.log(data.user_id);
           data.id

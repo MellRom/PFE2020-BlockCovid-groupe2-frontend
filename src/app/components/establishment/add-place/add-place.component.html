@@ -1,1 +1,32 @@
-<p>add-place works!</p>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+        <div class="fadeIn first">
+            <img style="width: 75px;height: auto;" src="../../assets/images/connexionImage.jpg" id="icon"
+                alt="User Icon" />
+        </div>
+        <form [formGroup]="addPlaceForm" (ngSubmit)="onSubmitPlace()">
+            <div class="form-group">
+                <input type="text" id="placeName" class="fadeIn second" formControlName="placeName"
+                    placeholder="Nom du lieu" [ngClass]="{ 'invalid': submitted && f.placeName.errors }" />
+                <div *ngIf="submitted && f.placeName.errors != null" class="alert alert-danger">
+                    Nom manquant
+                </div>
+                <div class="form-group">
+                    <input type="text" id="placeDescription" class="fadeIn third" formControlName="placeDescription"
+                        placeholder="Description" [ngClass]="{ 'invalid': submitted && f.placeDescription.errors }" />
+                    <div *ngIf="submitted && f.placeDescription.errors != null" class="alert alert-danger">
+                        Mot de passe manquant
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="fadeIn fourth" value="Ajouter un lieu" />
+                </div>
+                <div id="formFooter">
+                    <a class="underlineHover" routerLink="/establishment">Retour</a>
+                  </div>
+            </div>
+        </form>
+
+    </div>
+</div>

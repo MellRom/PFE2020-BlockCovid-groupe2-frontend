@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IWebUser } from 'src/app/models/webUser';
-import { ApiService } from 'src/app/services/login/api.service'
+import { ApiService } from 'src/app/services/api/api.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 

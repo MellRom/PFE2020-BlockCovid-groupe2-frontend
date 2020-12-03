@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ApiService } from 'src/app/services/login/api.service'
+import { ApiService } from 'src/app/services/api/api.service'
 
 
 @Component({
