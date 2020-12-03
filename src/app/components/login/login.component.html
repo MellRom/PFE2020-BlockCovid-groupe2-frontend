@@ -1,35 +1,38 @@
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
+<div class = "login-container">
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
 
-    <div class="fadeIn first">
-      <img style="width: 75px;height: auto;" src="../../assets/images/connexionImage.jpg" id="icon" alt="User Icon" />
-    </div>
+      <div class="fadeIn first">
+        <img style="width: 75px;height: auto;" src="../../assets/images/connexionImage.jpg" id="icon" alt="User Icon" />
+      </div>
 
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <input type="text" id="username" class="fadeIn second" formControlName="username" placeholder="Pseudo"
-          [ngClass]="{ 'invalid': submitted && f.username.errors }" />
-        <div *ngIf="submitted && f.username.errors != null" class="alert alert-danger">
-          Pseudo manquant 
-        </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <input type="password" id="password" class="fadeIn third" formControlName="password"
-            placeholder="Mot de passe" [ngClass]="{ 'invalid': submitted && f.password.errors }" />
-          <div *ngIf="submitted && f.password.errors != null" class="alert alert-danger">
-            Mot de passe manquant
+          <input type="text" id="username" class="fadeIn second" formControlName="username" placeholder="Pseudo"
+            [ngClass]="{ 'invalid': submitted && f.username.errors }" />
+          <div *ngIf="submitted && f.username.errors != null" class="alert alert-danger">
+            Pseudo manquant
+          </div>
+          <div class="form-group">
+            <input type="password" id="password" class="fadeIn third" formControlName="password"
+              placeholder="Mot de passe" [ngClass]="{ 'invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors != null" class="alert alert-danger">
+              Mot de passe manquant
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="submit" class="fadeIn fourth" value="Se connecter" />
+            <div *ngIf="submitted && f.username.errors == null && f.password.errors == null && !connected">Pseudo ou mot
+              de passe incorrecte</div>
           </div>
         </div>
-        <div class="form-group">
-          <input  type="submit" class="fadeIn fourth" value="Se connecter" />
-          <div *ngIf="submitted && f.username.errors == null && f.password.errors == null && !connected">Pseudo ou mot de passe incorrecte</div>
-        </div>
+      </form>
+
+      <div id="formFooter">
+        <a class="underlineHover" routerLink="/inscription">Pas de compte? Inscrivez-vous</a>
       </div>
-    </form>
 
-    <div id="formFooter">
-      <a class="underlineHover" routerLink="/inscription">Pas de compte? Inscrivez-vous</a>
     </div>
-
   </div>
 </div>

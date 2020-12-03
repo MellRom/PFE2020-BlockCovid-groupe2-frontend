@@ -1,10 +1,19 @@
-<h1>{{title}}</h1>
-<nav>
-    <a class="button" routerLink="/login" routerLinkActive="activebutton">Connexion</a>
-    <a class="button" routerLink="/inscription" routerLinkActive="activebutton">Inscription</a>
-    <a class="button" routerLink="/doctor" routerLinkActive="activebutton">Médecin</a>
-    <a class="button" routerLink="/establishment" routerLinkActive="activebutton">Etablissement</a>
+<div class="my-container">
+    <div>
+        <img src="./assets/images/shield-virus.png">
+        <h1 style="display: inline;">{{title}}</h1>
+    </div>
+    <nav>
+        <a class="button" routerLink="/login" routerLinkActive="activebutton">Connexion</a>
+        <a class="button" routerLink="/inscription" routerLinkActive="activebutton">Inscription</a>
+        <a class="button" routerLink="/doctor" routerLinkActive="activebutton">Médecin</a>
+        <a class="button" routerLink="/establishment" routerLinkActive="activebutton">Etablissement</a>
 
-</nav>
-<router-outlet></router-outlet>
+    </nav>
+    <router-outlet></router-outlet>
+    
 
+<footer class="card-footer">
+    <small class="text-muted"><i class="far fa-copyright"></i>Groupe 2 - IPL </small>
+</footer>
+</div>
