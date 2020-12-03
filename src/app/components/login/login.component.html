@@ -8,22 +8,25 @@
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <input type="text" id="username" class="fadeIn second" formControlName="username" placeholder="Pseudo" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-          <div *ngIf="f.Username.errors.required">Username is required</div>
+        <input type="text" id="username" class="fadeIn second" formControlName="username" placeholder="Pseudo"
+          [ngClass]="{ 'invalid': submitted && f.username.errors }" />
+        <div *ngIf="submitted && f.username.errors != null" class="alert alert-danger">
+          Pseudo manquant 
         </div>
-      </div>
-      <div class="form-group">
-        <input type="password" id="password" class="fadeIn third" formControlName="password" placeholder="Mot de passe" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-          <div *ngIf="f.password.errors.required">Password is required</div>
+        <div class="form-group">
+          <input type="password" id="password" class="fadeIn third" formControlName="password"
+            placeholder="Mot de passe" [ngClass]="{ 'invalid': submitted && f.password.errors }" />
+          <div *ngIf="submitted && f.password.errors != null" class="alert alert-danger">
+            Mot de passe manquant
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <input type="submit" class="fadeIn fourth" value="Se connecter">
+        <div class="form-group">
+          <input  type="submit" class="fadeIn fourth" value="Se connecter" />
+          <div *ngIf="submitted && !connected">Pseudo ou mot de passe incorrecte</div>
+        </div>
       </div>
     </form>
-    
+
     <div id="formFooter">
       <a class="underlineHover" routerLink="/inscription">Pas de compte? Inscrivez-vous</a>
     </div>

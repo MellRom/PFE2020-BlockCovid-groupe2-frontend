@@ -13,10 +13,9 @@ import { Router, RouterLink } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
-  loading = false;
+  connected = false;
 
   constructor(private formBuilder: FormBuilder,
-    private alertService: AlertService,
     private loginService: LoginService,
     private router: Router) { }
 
@@ -31,23 +30,22 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   onSubmit() {
-    this.submitted = true;    
+    this.submitted = true;   
+
     if (this.loginForm.invalid) {
       return;
     }
 
-    this.loading = true;
     this.loginService.login(this.f.username.value, this.f.password.value)
     .subscribe(
       data => {
-        console.log(data);
+        this.connected = true;
         if(data.role==='doctor'){
           this.router.navigate(['/doctor'])
         }
       },
       error => {
-        this.alertService.error(error);
-        this.loading = false;
+        this.f.clear;
       }
     )
   }
