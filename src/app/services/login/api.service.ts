@@ -24,4 +24,7 @@ export class ApiService {
     console.log(login);
     return this.http.post<any>(environment.api_url + '/inscription', {"login": login, "password": password, "role": role, "name": name, "adress": adress })
   }
+  listPlace(id_establishment){
+    return this.http.post<any>(environment.api_url + '/establishment/liste_lieux',{"id_establishment": id_establishment})
+  }
 }
