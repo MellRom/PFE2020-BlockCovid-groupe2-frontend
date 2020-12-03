@@ -38,6 +38,8 @@ export class LoginComponent implements OnInit {
     this.apiService.login(this.f.username.value, this.f.password.value)
     .subscribe(
       data => {
+        console.log(data);
+        
         this.connected = true;
         if(data.role==='doctor'){
           this.router.navigate(['/doctor'])
@@ -49,8 +51,8 @@ export class LoginComponent implements OnInit {
           //this.router.navigate(['/establishment'])
         }
       },
-      error => {
-        console.log(error);
+      error => {        
+        console.log(error);        
         this.f.clear;
       }
     )

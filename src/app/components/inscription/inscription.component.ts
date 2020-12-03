@@ -57,6 +57,8 @@ export class InscriptionComponent implements OnInit {
         console.log(data);
         if(data.role==='doctor'){
           this.router.navigate(['/doctor'])
+        }else{
+          this.router.navigate(['/establishment'])
         }
       },
       error => {
