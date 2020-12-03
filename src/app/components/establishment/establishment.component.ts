@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from 'src/app/services/login/api.service'
 
 
@@ -14,12 +14,18 @@ export class EstablishmentComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @ViewChild('input') private input;
   showPlace(){
     console.log("showplace")
     this.apiService.listPlace(5)
     .subscribe(
       data => {
         console.log(data);
+        console.log(data[0].name);
+        this.input.nativeElement.focus();
+        let startPos = this.input.nativeElement.selectionStart;
+        let value = this.input.nativeElement.value;
+        this.input.nativeElement.value=value.substring(0, startPos) + data[0].name + value.substring(startPos, value.length)
       },
       error => {
         console.log("error listing place")

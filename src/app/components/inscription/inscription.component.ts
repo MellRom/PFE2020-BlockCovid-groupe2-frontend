@@ -47,7 +47,7 @@ export class InscriptionComponent implements OnInit {
     if(this.f.role.value==='Médecin'){
       role = 'doctor'
     } else {
-      role = 'establishement'
+      role = 'establishment'
     }
 
     this.loading = true;
