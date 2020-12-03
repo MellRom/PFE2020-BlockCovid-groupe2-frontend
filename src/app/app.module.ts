@@ -9,7 +9,6 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { LoginComponent } from './components/login/login.component';
 import { InscriptionComponent } from './components/inscription/inscription.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AlertComponent } from './components/alert/alert.component';
 import { DoctorComponent } from './components/doctor/doctor.component';
 
 @NgModule({
@@ -18,7 +17,6 @@ import { DoctorComponent } from './components/doctor/doctor.component';
     HelloComponent,
     LoginComponent,
     InscriptionComponent,
-    AlertComponent,
     DoctorComponent
   ],
   imports: [

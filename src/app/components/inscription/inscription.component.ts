@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IWebUser } from 'src/app/models/webUser';
-import { LoginService } from 'src/app/services/login/login.service'
+import { ApiService } from 'src/app/services/login/api.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertService } from 'src/app/services/alert/alert.service';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-inscription',
@@ -21,8 +21,8 @@ export class InscriptionComponent implements OnInit {
   submitted = false;
   loading = false;
   constructor(private formBuilder: FormBuilder,
-    private alertService: AlertService,
-    private loginService: LoginService) { }
+    private apiService: ApiService,
+    private router: Router) { }
 
     ngOnInit(): void {
       this.inscriptionForm = this.formBuilder.group({
@@ -51,13 +51,15 @@ export class InscriptionComponent implements OnInit {
     }
 
     this.loading = true;
-    this.loginService.inscription(this.f.login.value, this.f.name.value, role, this.f.password.value, this.f.adress.value)
+    this.apiService.inscription(this.f.login.value, this.f.name.value, role, this.f.password.value, this.f.adress.value)
     .subscribe(
       data => {
         console.log(data);
+        if(data.role==='doctor'){
+          this.router.navigate(['/doctor'])
+        }
       },
       error => {
-        this.alertService.error(error);
         this.loading = false;
       }
     )
