@@ -16,7 +16,9 @@ export class EstablishmentComponent implements OnInit {
   generateCode = false;
   qrCode: string = null;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService) {
+    this.showPlace()
+   }
 
   ngOnInit(): void {
   }
@@ -40,7 +42,7 @@ export class EstablishmentComponent implements OnInit {
   genereateQrCode(id, name, description): void {
     this.generateCode = true;
     console.log(id, name, description);
-    this.qrdata = "id:" + id + ", name:" + name + ", description:" + description;
+    this.qrdata = "id:'"+id + "', name:'" + name + "', description:'" + description + "'";
   }
 }
 

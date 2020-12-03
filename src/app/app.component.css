@@ -34,11 +34,7 @@ body, input[type="text"], button {
 
 /* everywhere else */
 
-* {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.button {
+.coronabtn{
   background-color: #C2666E;
   border: none;
   color: white;
@@ -60,6 +56,14 @@ body, input[type="text"], button {
   transition: all 0.3s ease-in-out;
 }
 
-.activebutton {
+.coronabtn:hover {
   background-color: #D6666E;
+}
+
+.coronabtn:active {
+  -moz-transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -o-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }

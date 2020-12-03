@@ -21,3 +21,13 @@
     left: 0;
     z-index: 1;
 }
+
+.btn-primary{
+    background-color: #C2666E;
+    border-color: #D6666E;
+}
+
+.btn-primary:hover{
+    background-color: #D6666E;
+    border-color: #C2666E;
+}
