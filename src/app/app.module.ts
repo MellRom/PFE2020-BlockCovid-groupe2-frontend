@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { InscriptionComponent } from './components/inscription/inscription.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './components/alert/alert.component';
+import { DoctorComponent } from './components/doctor/doctor.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AlertComponent } from './components/alert/alert.component';
     HelloComponent,
     LoginComponent,
     InscriptionComponent,
-    AlertComponent
+    AlertComponent,
+    DoctorComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,9 @@ import { AlertComponent } from './components/alert/alert.component';
     RouterModule.forRoot([
       { path: 'hello', component: HelloComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'inscription', component: InscriptionComponent }
+      { path: 'inscription', component: InscriptionComponent },
+      { path: 'doctor', component: DoctorComponent }
+
 
     ])
   ],

@@ -3,6 +3,7 @@ import { IWebUser } from 'src/app/models/webUser';
 import { LoginService } from 'src/app/services/login/login.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/services/alert/alert.service';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private alertService: AlertService,
-    private loginService: LoginService) { }
+    private loginService: LoginService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -39,6 +41,9 @@ export class LoginComponent implements OnInit {
     .subscribe(
       data => {
         console.log(data);
+        if(data.role==='doctor'){
+          this.router.navigate(['/doctor'])
+        }
       },
       error => {
         this.alertService.error(error);

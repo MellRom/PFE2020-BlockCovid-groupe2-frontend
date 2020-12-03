@@ -43,9 +43,15 @@ export class InscriptionComponent implements OnInit {
       console.log("invalid");
       return;
     }*/
+    let role ='role';
+    if(this.f.role.value==='Médecin'){
+      role = 'doctor'
+    } else {
+      role = 'establishement'
+    }
 
     this.loading = true;
-    this.loginService.inscription(this.f.login.value, this.f.name.value, this.f.role.value, this.f.password.value, this.f.adress.value)
+    this.loginService.inscription(this.f.login.value, this.f.name.value, role, this.f.password.value, this.f.adress.value)
     .subscribe(
       data => {
         console.log(data);
