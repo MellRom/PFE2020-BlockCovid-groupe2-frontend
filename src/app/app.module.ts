@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DoctorComponent } from './components/doctor/doctor.component';
 import { EstablishmentComponent } from './components/establishment/establishment.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AddPlaceComponent } from './components/establishment/add-place/add-place.component';
 
 const appRoutes: Routes = [
   { path: 'hello', component: HelloComponent },
@@ -30,7 +31,8 @@ const appRoutes: Routes = [
     InscriptionComponent,
     DoctorComponent,
     EstablishmentComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AddPlaceComponent
   ],
   imports: [
     BrowserModule,
@@ -39,8 +41,7 @@ const appRoutes: Routes = [
     QRCodeModule,
     ReactiveFormsModule,
     RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true }
+      appRoutes
     )
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

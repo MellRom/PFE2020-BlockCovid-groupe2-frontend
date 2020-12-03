@@ -1,53 +1,55 @@
 <div class="card bg-light">
-<article class="card-body mx-auto" style="max-width: 400px;">
-	<h4 class="card-title mt-3 text-center">Créer un compte</h4>
-	<p class="text-center">Vous allez bientôt pouvoir utiliser cette superbe application...</p>
-	<form [formGroup]="inscriptionForm" (ngSubmit)="onSubmit()">
-    <div class="form-group input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-         </div>
-        <input name="" class="form-control" formControlName="login" placeholder="Login" type="text">
-    </div> <!-- form-group// -->
-	<div class="form-group input-group">
-		<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-		 </div>
-        <input name="" class="form-control" formControlName="name" placeholder="Nom ou Etablissement" type="text">
-    </div> <!-- form-group// -->
+	<article class="card-body mx-auto" style="max-width: 400px;">
+		<h4 class="card-title mt-3 text-center">Créer un compte</h4>
+		<p class="text-center">Vous allez bientôt pouvoir utiliser cette superbe application...</p>
+		<form [formGroup]="inscriptionForm" (ngSubmit)="onSubmit()">
+			<div class="form-group input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+				</div>
+				<input name="" class="form-control" formControlName="login" placeholder="Login" type="text">
+			</div> <!-- form-group// -->
+			<div class="form-group input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+				</div>
+				<input name="" class="form-control" formControlName="name" placeholder="Nom ou Etablissement"
+					type="text">
+			</div> <!-- form-group// -->
 
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-building"></i> </span>
-		</div>
-		<select class="form-control" formControlName="role">
-			<option selected="">Selectionnez votre type de compte :</option>
-			<option>Médecin</option>
-			<option>Etablissement</option>
-		</select>
-	</div> <!-- form-group end.// -->
-	<div class="form-group input-group">
-		<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-building"></i> </span>
-		 </div>
-        <input name="adresse" class="form-control" formControlName="adress" placeholder="Adresse (dans le cas d'un etablissement)" type="text">
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-		</div>
-        <input class="form-control" placeholder="Mot de passe" formControlName="password" type="password">
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-		</div>
-        <input class="form-control" placeholder="Confirmer le mot de passe" type="password">
-    </div> <!-- form-group// -->                                      
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block">S'inscrire</button>
-    </div> <!-- form-group// -->      
-    <p class="text-center">Vous avez déjà un compte? <a routerLink="/login">Connectez-vous</a> </p>                                                                 
-</form>
-</article>
+			<div class="form-group input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text"> <i class="fa fa-building"></i> </span>
+				</div>
+				<select class="form-control" formControlName="role">
+					<option selected="">Selectionnez votre type de compte :</option>
+					<option>Médecin</option>
+					<option>Etablissement</option>
+				</select>
+			</div> <!-- form-group end.// -->
+			<div class="form-group input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text"> <i class="fa fa-building"></i> </span>
+				</div>
+				<input name="adresse" class="form-control" formControlName="adress"
+					placeholder="Adresse (dans le cas d'un etablissement)" type="text">
+			</div> <!-- form-group// -->
+			<div class="form-group input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+				</div>
+				<input class="form-control" placeholder="Mot de passe" formControlName="password" type="password">
+			</div> <!-- form-group// -->
+			<div class="form-group input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+				</div>
+				<input class="form-control" placeholder="Confirmer le mot de passe" type="password">
+			</div> <!-- form-group// -->
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary btn-block">S'inscrire</button>
+			</div> <!-- form-group// -->
+			<p class="text-center">Vous avez déjà un compte? <a routerLink="/login">Connectez-vous</a> </p>
+		</form>
+	</article>
 </div> <!-- card.// -->
