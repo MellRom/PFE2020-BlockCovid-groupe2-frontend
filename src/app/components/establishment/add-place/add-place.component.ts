@@ -32,6 +32,7 @@ export class AddPlaceComponent implements OnInit {
     if (this.addPlaceForm.invalid) {
       return;
     }
+    
     this.apiService.addPlace(this.f.placeName.value, this.f.placeDescription.value, 1)
       .subscribe(
         data => {

@@ -16,18 +16,21 @@
                     <input type="text" id="placeDescription" class="fadeIn third" formControlName="placeDescription"
                         placeholder="Description" [ngClass]="{ 'invalid': submitted && f.placeDescription.errors }" />
                     <div *ngIf="submitted && f.placeDescription.errors != null" class="alert alert-danger">
-                        Mot de passe manquant
+                        Description manquante
                     </div>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="fadeIn fourth" value="Ajouter un lieu" />
                 </div>
-                <div class="d-flex justify-content-center qrcode">
-                    <qrcode  [qrdata]="qrdata" [size]="124" [level]="'M'"></qrcode>
+                <div class="form-group">
+                    <div *ngIf="submitted && f.placeDescription.errors == null && f.placeName.errors == null"
+                        class="d-flex justify-content-center qrcode">
+                        <qrcode [qrdata]="qrdata" [size]="124" [level]="'M'"></qrcode>
+                    </div>
                 </div>
                 <div id="formFooter">
                     <a class="underlineHover" routerLink="/establishment">Retour</a>
-                  </div>
+                </div>
             </div>
         </form>
     </div>
