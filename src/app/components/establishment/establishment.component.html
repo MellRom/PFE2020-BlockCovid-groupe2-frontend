@@ -1,12 +1,15 @@
-<div>
-    <button type="button" class="btn btn-secondary"(click)="showPlace()">
-        Liste des lieux
-        <span class="popuptext" id="listPopup"></span>
-    </button>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <button class="btn btn-primary" (click)="showPlace()">Afficher les lieux</button>
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-primary" routerLink="/ajout-lieu">Ajouter un lieu</button>
+        </div>    
+    </div>
+    <br />
 
-    <a class="btn btn-secondary" routerLink="/ajout-lieu">Ajouter un lieu</a>
+   <table class="table"></table>
     
-    <input #input type="text">
-
 </div>
 

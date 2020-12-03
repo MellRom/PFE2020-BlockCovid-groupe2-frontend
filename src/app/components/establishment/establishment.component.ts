@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api/api.service'
 
 
@@ -10,27 +10,38 @@ import { ApiService } from 'src/app/services/api/api.service'
 export class EstablishmentComponent implements OnInit {
 
   constructor(private apiService: ApiService) { }
-
+  
   ngOnInit(): void {
   }
 
-  @ViewChild('input') private input;
   showPlace(){
     console.log("showplace")
     this.apiService.listPlace(1)
     .subscribe(
       data => {
         console.log(data);
-        console.log(data[0].name);
-        this.input.nativeElement.focus();
-        let startPos = this.input.nativeElement.selectionStart;
-        let value = this.input.nativeElement.value;
-        this.input.nativeElement.value=value.substring(0, startPos) + data[0].name + value.substring(startPos, value.length)
+        let table = document.querySelector("table");
+        this.generateTableHead(table, data);
       },
       error => {
         console.log("error listing place")
       }
     )
+  }
+
+  generateTableHead(table, data) {
+    let thead = table.createTHead();
+    let row = thead.insertRow();
+    for (let key of data) {
+      let th = document.createElement("th");
+      let text = document.createTextNode(key.name);
+      let text2= document.createTextNode(" : ");
+      let text3 = document.createTextNode(key.description);
+      th.appendChild(text);
+      th.appendChild(text2);
+      th.appendChild(text3);
+      row.appendChild(th);
+    }
   }
 
 }
