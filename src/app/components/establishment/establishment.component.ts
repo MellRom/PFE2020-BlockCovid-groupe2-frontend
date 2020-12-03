@@ -52,7 +52,7 @@ SELECT * FROM projetpfe.establishment
 SELECT * FROM projetpfe.web_user
 SELECT * FROM projetpfe.place
 
-INSERT INTO projetpfe.web_user (login, password, name, role) VALUES ('ipl', 'notre ecole woula','ipl','establishment')
-INSERT INTO projetpfe.establishment (user_id, adress) VALUES (1,'rue chapel aux champs')
-INSERT INTO projetpfe.place (name, description, id_establishment) VALUES ('La table de midi', 'On y est bien ',1)
+INSERT INTO projetpfe.web_user (login, password, name, role) VALUES ('ipl', 'ipl','Institut Paul-Lambin','establishment')
+INSERT INTO projetpfe.establishment (user_id, address) VALUES (1,'Rue chapelle aux champs')
+INSERT INTO projetpfe.place (name, description, id_establishment) VALUES ('A019', 'Salle Machine ',1)
 */
