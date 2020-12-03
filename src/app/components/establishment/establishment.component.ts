@@ -17,7 +17,7 @@ export class EstablishmentComponent implements OnInit {
   @ViewChild('input') private input;
   showPlace(){
     console.log("showplace")
-    this.apiService.listPlace(5)
+    this.apiService.listPlace(1)
     .subscribe(
       data => {
         console.log(data);
@@ -40,7 +40,8 @@ export class EstablishmentComponent implements OnInit {
 SELECT * FROM projetpfe.establishment
 SELECT * FROM projetpfe.web_user
 SELECT * FROM projetpfe.place
-INSERT INTO projetpfe.establishment (user_id) VALUES (5)
-INSERT INTO projetpfe.place (name, description, id_establishment) VALUES ('La table de midi', 'On y est bien ',5)
 
+INSERT INTO projetpfe.web_user (login, password, name, role) VALUES ('ipl', 'notre ecole woula','ipl','establishment')
+INSERT INTO projetpfe.establishment (user_id, adress) VALUES (1,'rue chapel aux champs')
+INSERT INTO projetpfe.place (name, description, id_establishment) VALUES ('La table de midi', 'On y est bien ',1)
 */

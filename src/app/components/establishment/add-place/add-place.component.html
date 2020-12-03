@@ -22,11 +22,13 @@
                 <div class="form-group">
                     <input type="submit" class="fadeIn fourth" value="Ajouter un lieu" />
                 </div>
+                <div class="d-flex justify-content-center qrcode">
+                    <qrcode  [qrdata]="qrdata" [size]="124" [level]="'M'"></qrcode>
+                </div>
                 <div id="formFooter">
                     <a class="underlineHover" routerLink="/establishment">Retour</a>
                   </div>
             </div>
         </form>
-
     </div>
 </div>

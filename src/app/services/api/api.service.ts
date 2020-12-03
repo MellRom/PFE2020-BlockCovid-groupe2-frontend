@@ -27,7 +27,7 @@ export class ApiService {
   listPlace(id_establishment) {
     return this.http.post<any>(environment.api_url + '/establishment/liste_lieux', { "id_establishment": id_establishment })
   }
-  addPlace(id_establishment, placeName, placeDescription) {
-    return this.http.post<any>(environment.api_url + '/establishment/ajout-lieu', { "name": placeName, "description": placeDescription, "id_establishment": id_establishment })
+  addPlace(placeName, placeDescription, id_establishment) {
+    return this.http.post<any>(environment.api_url + '/establishment/ajout_lieu', { "name": placeName, "description": placeDescription, "id_establishment": id_establishment })
   }
 }
