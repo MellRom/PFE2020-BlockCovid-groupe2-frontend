@@ -44,7 +44,7 @@
                 <td (click)="genereateQrCode(place.place_id, place.name, place.description)">
                     <ng-template #popContent>
                         <qrcode [qrdata]="qrdata"[size]="124" [level]="'M'"></qrcode>
-                        <button class="btn btn-secondary" (click)="generatePdf(place.place_id, place.name, place.description)">Générer en pdf</button>
+                        <button class="btn btn-secondary" (click)="generatePdf(place.name, place.description)">Générer en pdf</button>
                     </ng-template>
                     <button class="btn btn-primary" placement="right" [ngbPopover]="popContent" popoverTitle="QR Code pour {{place.name}}">Générer Code QR
                     </button>
