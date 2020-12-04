@@ -11,31 +11,35 @@ import { environment } from 'src/environments/environment';
 })
 export class AppComponent {
   title = 'BlockCovid';
-  connected = false;
+  connected: boolean = false;
   username: string = null;
-  is_doctor = false;
+  is_doctor: boolean;
   constructor(
     private cookieService: CookieService,
-    private router: Router) {
-   }
-   
-   ngOnInit(): void {
-    if(this.cookieService.get("web_user_id")==null){
-      this.connected = false;      
+    private router: Router) {}
+
+  ngOnInit(): void {
+    console.log(this.cookieService.getAll());
+    console.log(this.connected);
+    console.log(this.username);
+    console.log(this.is_doctor);
+    
+
+    if (this.cookieService.get("web_user_id") == null) {
+      this.connected = false;
     } else {
       this.connected = true;
       this.username = this.cookieService.get("web_user_username");
-      if( this.cookieService.get("web_user_role") == "doctor"){
+      if (this.cookieService.get("web_user_role") == "doctor") {
         this.is_doctor = true
       }
     }
   }
 
-   deconnexion(){
-     this.cookieService.deleteAll();
-     this.username = null;
-     this.connected = false;
-     this.is_doctor = false;
-     this.router.navigate([''])
-   }
+  deconnexion() {
+    this.cookieService.deleteAll();
+    this.username = null;
+    this.connected = false;
+    this.router.navigate(['/login'])
+  }
 }

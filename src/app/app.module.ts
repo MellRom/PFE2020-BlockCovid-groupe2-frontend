@@ -13,16 +13,13 @@ import { EstablishmentComponent } from './components/establishment/establishment
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AddPlaceComponent } from './components/establishment/add-place/add-place.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { WelcomeComponent } from './components/welcome/welcome.component';
 
 const appRoutes: Routes = [
-  { path: '', component: WelcomeComponent},
   { path: 'login', component: LoginComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: 'doctor', component: DoctorComponent },
   { path: 'establishment', component: EstablishmentComponent },
-  { path: 'ajout-lieu', component: AddPlaceComponent },
-  { path: '**', component: PageNotFoundComponent }
+  { path: 'ajout-lieu', component: AddPlaceComponent }
 ];
 
 @NgModule({
@@ -33,8 +30,7 @@ const appRoutes: Routes = [
     DoctorComponent,
     EstablishmentComponent,
     PageNotFoundComponent,
-    AddPlaceComponent,
-    WelcomeComponent
+    AddPlaceComponent
   ],
   imports: [
     BrowserModule,

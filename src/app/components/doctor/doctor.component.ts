@@ -20,7 +20,8 @@ export class DoctorComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.cookieService.get("web_user_role") != 'doctor') {
-      this.router.navigate(['/**'])
+      console.log("COUCOUUUU");
+      this.router.navigate(['**'])
     }
   }
 

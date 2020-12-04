@@ -1,16 +1,15 @@
 <div class="my-container">
-    <div>
-        <div style="display: inline-block;">
-            <a routerLink="">
-                <img src="./assets/images/shield-virus.png">
-                <h1 style="display: inline;">{{title}}</h1>
-            </a>
-        </div>
-        <div *ngIf="username != null" style="display: inline-block;">
-            {{username}}
-        </div>
+    <div style="display: inline-block;">
+        <a routerLink="">
+            <img src="./assets/images/shield-virus.png">
+            <h1 style="display: inline;">{{title}}</h1>
+        </a>
     </div>
-
+    <div style="float: right; padding-right: 50px;">
+        <h1 *ngIf="username != null" style="display: inline-block;">
+            Bienvenue, {{username}}
+        </h1>
+    </div>
 
     <nav>
         <a *ngIf=(!connected) class="coronabtn" routerLink="/login" routerLinkActive="activebutton">Connexion</a>
@@ -20,12 +19,11 @@
             routerLinkActive="activebutton">Médecin</a>
         <a *ngIf="connected && !is_doctor" class="coronabtn" routerLink="/establishment"
             routerLinkActive="activebutton">Etablissement</a>
-        <a *ngIf=(connected) id="deco" (click)="deconnexion()" class="coronabtn" routerLink="/establishment"
+        <a *ngIf=(connected) (click)="deconnexion()" class="coronabtn" routerLink="/establishment"
             routerLinkActive="activebutton">Déconnexion</a>
 
     </nav>
     <router-outlet></router-outlet>
-
 
     <footer class="card-footer">
         <small class="text-muted"><i class="far fa-copyright"></i>Groupe 2 - IPL </small>
