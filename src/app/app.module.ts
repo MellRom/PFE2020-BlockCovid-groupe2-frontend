@@ -19,7 +19,8 @@ const appRoutes: Routes = [
   { path: 'inscription', component: InscriptionComponent },
   { path: 'doctor', component: DoctorComponent },
   { path: 'establishment', component: EstablishmentComponent },
-  { path: 'ajout-lieu', component: AddPlaceComponent }
+  { path: 'ajout-lieu', component: AddPlaceComponent },
+  { path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

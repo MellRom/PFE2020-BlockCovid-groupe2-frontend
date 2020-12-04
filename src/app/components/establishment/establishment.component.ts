@@ -3,6 +3,9 @@ import { ApiService } from 'src/app/services/api/api.service'
 import { IPlace } from 'src/app/models/place'
 import { CookieService } from 'ngx-cookie-service';
 import { Router, RouterLink } from '@angular/router';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-establishment',
@@ -21,10 +24,10 @@ export class EstablishmentComponent implements OnInit {
     private cookieService: CookieService,
     private router: Router) {
     this.showPlace()
-   }
+  }
 
   ngOnInit(): void {
-    if(this.cookieService.get("web_user_role")!='establishment'){
+    if (this.cookieService.get("web_user_role") != 'establishment') {
       this.router.navigate(['/**'])
     }
   }
@@ -46,7 +49,16 @@ export class EstablishmentComponent implements OnInit {
   genereateQrCode(id, name, description): void {
     this.generateCode = true;
     console.log(id, name, description);
-    this.qrdata = "id:'"+id + "', name:'" + name + "', description:'" + description + "'";
+    this.qrdata = "id:'" + id + "', name:'" + name + "', description:'" + description + "'";
+  }
+
+  generatePdf(id, name, description) {
+    const documentDefinition = {
+      content: [
+        {qr: this.qrdata, fit: '100', eccLevel: 'Q'}
+      ]
+    };
+    pdfMake.createPdf(documentDefinition).print();
   }
 }
 

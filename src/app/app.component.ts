@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Router, RouterLink } from '@angular/router';
-import { environment } from 'src/environments/environment';
 
 
 @Component({
