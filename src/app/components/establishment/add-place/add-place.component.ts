@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api/api.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-ajout-place',
@@ -14,7 +15,8 @@ export class AddPlaceComponent implements OnInit {
   qrdata: string = null;
   constructor(private formBuilder: FormBuilder,
     private apiService: ApiService,
-    private router: Router) {
+    private router: Router,
+    private cookieService: CookieService,) {
   }
 
   ngOnInit(): void {
@@ -33,10 +35,9 @@ export class AddPlaceComponent implements OnInit {
       return;
     }
     
-    this.apiService.addPlace(this.f.placeName.value, this.f.placeDescription.value, 1)
+    this.apiService.addPlace(this.f.placeName.value, this.f.placeDescription.value, this.cookieService.get("web_user_id"))
       .subscribe(
         data => {
-          console.log("OKKKKK")
           this.genereateQrCode();
         },
         error => {
@@ -47,6 +48,7 @@ export class AddPlaceComponent implements OnInit {
   }
 
   genereateQrCode(): void {
-    this.qrdata = "'name': " + this.f.placeName.value + ", 'description': " + this.f.placeDescription.value + ", 'id_establishment': 1";
+    console.log(this.cookieService.get("web_user_id"));
+    this.qrdata = "'name': " + this.f.placeName.value + ", 'description': " + this.f.placeDescription.value + ", 'id_establishment': " + this.cookieService.get("web_user_id");
   }
 }

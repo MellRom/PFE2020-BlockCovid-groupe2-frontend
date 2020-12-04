@@ -13,8 +13,10 @@ import { EstablishmentComponent } from './components/establishment/establishment
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AddPlaceComponent } from './components/establishment/add-place/add-place.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 const appRoutes: Routes = [
+  { path: '', component: WelcomeComponent},
   { path: 'login', component: LoginComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: 'doctor', component: DoctorComponent },
@@ -31,7 +33,8 @@ const appRoutes: Routes = [
     DoctorComponent,
     EstablishmentComponent,
     PageNotFoundComponent,
-    AddPlaceComponent
+    AddPlaceComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

@@ -34,10 +34,7 @@ export class EstablishmentComponent implements OnInit {
     this.apiService.listPlace(this.cookieService.get("web_user_id"))
       .subscribe(
         data => {
-          console.log(this.cookieService.get("web_user_id"));
-          console.log(data);
           this.places = data
-          console.log(this.places);
         },
         error => {
           console.log("error listing place")
