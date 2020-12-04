@@ -3,6 +3,8 @@ import { IWebUser } from 'src/app/models/webUser';
 import { ApiService } from 'src/app/services/api/api.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { ifStmt } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private apiService: ApiService,
-    private router: Router) { }
+    private router: Router,
+    private cookieService: CookieService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -38,16 +41,17 @@ export class LoginComponent implements OnInit {
     this.apiService.login(this.f.username.value, this.f.password.value)
     .subscribe(
       data => {
+        window.location.reload();
         console.log(data);
-        
+        this.cookieService.set("web_user_id",data.user_id);
+        this.cookieService.set("web_user_role",data.role);
+        console.log(this.cookieService.get("web_user_id"));
+        console.log(this.cookieService.get("web_user_role"));
         this.connected = true;
         if(data.role==='doctor'){
           this.router.navigate(['/doctor'])
         }
         if(data.role === 'establishment'){
-          console.log("ça marche");
-          console.log(data.user_id);
-          data.id
           this.router.navigate(['/establishment'])
         }
       },

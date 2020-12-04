@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api/api.service'
 import { IPlace } from 'src/app/models/place'
-
+import { CookieService } from 'ngx-cookie-service';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-establishment',
@@ -16,18 +17,24 @@ export class EstablishmentComponent implements OnInit {
   generateCode = false;
   qrCode: string = null;
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService,
+    private cookieService: CookieService,
+    private router: Router) {
     this.showPlace()
    }
 
   ngOnInit(): void {
+    if(this.cookieService.get("web_user_role")!='establishment'){
+      this.router.navigate(['/**'])
+    }
   }
 
   showPlace() {
     this.showTable = true;
-    this.apiService.listPlace(1)
+    this.apiService.listPlace(this.cookieService.get("web_user_id"))
       .subscribe(
         data => {
+          console.log(this.cookieService.get("web_user_id"));
           console.log(data);
           this.places = data
           console.log(this.places);

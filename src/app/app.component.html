@@ -8,6 +8,7 @@
         <a class="coronabtn" routerLink="/inscription" routerLinkActive="activebutton">Inscription</a>
         <a class="coronabtn" routerLink="/doctor" routerLinkActive="activebutton">Médecin</a>
         <a class="coronabtn" routerLink="/establishment" routerLinkActive="activebutton">Etablissement</a>
+        <a  *ngIf="connected==true" id="deco" (click)="deconnexion()" class="coronabtn" routerLink="/establishment" routerLinkActive="activebutton">Déconnexion</a>
 
     </nav>
     <router-outlet></router-outlet>
