@@ -1,1 +1,8 @@
-<p>doctor works!</p>
+<div>
+    <button class="bnt btn-primary" (click)="generateQrCode()">Générer un QR Code</button>
+    <div style="text-align: center; display: inline-block; padding: 50px;">
+        <qrcode  *ngIf=(generateCode) [qrdata]="qrdata"[size]="124" [level]="'M'"></qrcode>
+    </div>
+</div>
+
+
