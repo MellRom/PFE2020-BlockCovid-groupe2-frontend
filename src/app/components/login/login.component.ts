@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
           console.log("ça marche");
           console.log(data.user_id);
           data.id
-          //this.router.navigate(['/establishment'])
+          this.router.navigate(['/establishment'])
         }
       },
       error => {        
