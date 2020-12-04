@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { HelloComponent } from './components/hello/hello.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { LoginComponent } from './components/login/login.component';
 import { InscriptionComponent } from './components/inscription/inscription.component';
@@ -16,7 +15,6 @@ import { AddPlaceComponent } from './components/establishment/add-place/add-plac
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
-  { path: 'hello', component: HelloComponent },
   { path: 'login', component: LoginComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: 'doctor', component: DoctorComponent },
@@ -28,7 +26,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    HelloComponent,
     LoginComponent,
     InscriptionComponent,
     DoctorComponent,
