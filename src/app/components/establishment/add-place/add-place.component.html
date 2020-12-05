@@ -23,7 +23,7 @@
                     <input type="submit" class="fadeIn fourth" value="Ajouter un lieu" />
                 </div>
                 <div class="form-group">
-                    <div *ngIf="submitted && f.placeDescription.errors == null && f.placeName.errors == null"
+                    <div *ngIf="submitted && f.placeDescription.errors == null && f.placeName.errors == null && codeGenerated"
                         class="d-flex justify-content-center qrcode">
                         <qrcode [qrdata]="qrdata" [size]="124" [level]="'M'"></qrcode>
                     </div>

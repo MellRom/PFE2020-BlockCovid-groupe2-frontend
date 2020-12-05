@@ -1,56 +1,43 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-3">
-            <button class="coronabtn" routerLink="/ajout-lieu">Ajouter un lieu</button>
+    <div class="card">
+        <div class="card card-header">
+            <h1>
+                Liste de vos emplacements
+            </h1>
         </div>
-    </div>
-    <br />
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+        <div class="card-body">
+            <div style="text-align: center; margin: auto; padding-bottom: 20px;">
+                <button class="btn-corona" routerLink="/ajout-lieu">Ajouter un lieu</button>
             </div>
+            <table *ngIf=(showTable) class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Description</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let place of places">
+                        <th scope="row">{{place.place_id}}</th>
+                        <td>{{place.name}}</td>
+                        <td>{{place.description}}</td>
+                        <td (click)="genereateQrCode(place.place_id, place.name, place.description)">
+                            <ng-template #popContent>
+                                <div class="popup">
+                                    <qrcode [qrdata]="qrdata" [size]="124" [level]="'M'"></qrcode>
+                                    <button class="btn-corona btn-corona-popup"
+                                        (click)="generatePdf(place.name, place.description)">Imprimer .pdf</button>
+                                </div>
+                            </ng-template>
+                            <button class="btn-corona" placement="right" [ngbPopover]="popContent"
+                                popoverTitle="QR Code pour {{place.name}}">Générer Code QR
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-
-    <table *ngIf=(showTable) class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Description</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let place of places">
-                <th scope="row">{{place.place_id}}</th>
-                <td>{{place.name}}</td>
-                <td>{{place.description}}</td>
-                <td (click)="genereateQrCode(place.place_id, place.name, place.description)">
-                    <ng-template #popContent>
-                        <qrcode [qrdata]="qrdata"[size]="124" [level]="'M'"></qrcode>
-                        <button class="btn btn-secondary" (click)="generatePdf(place.name, place.description)">Générer en pdf</button>
-                    </ng-template>
-                    <button class="btn btn-primary" placement="right" [ngbPopover]="popContent" popoverTitle="QR Code pour {{place.name}}">Générer Code QR
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
 </div>

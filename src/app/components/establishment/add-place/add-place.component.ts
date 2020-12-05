@@ -13,6 +13,8 @@ export class AddPlaceComponent implements OnInit {
   addPlaceForm: FormGroup;
   submitted = false;
   qrdata: string = null;
+  codeGenerated: boolean;
+
   constructor(private formBuilder: FormBuilder,
     private apiService: ApiService,
     private router: Router,
@@ -39,6 +41,7 @@ export class AddPlaceComponent implements OnInit {
       .subscribe(
         data => {
           this.genereateQrCode();
+          this.codeGenerated = true;
         },
         error => {
           console.log(error);

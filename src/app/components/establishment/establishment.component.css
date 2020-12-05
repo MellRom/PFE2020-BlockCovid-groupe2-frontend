@@ -1,18 +1,16 @@
-.coronabtn {
+.btn-corona {
     background-color: #C2666E;
     border: none;
     color: white;
-    padding: 15px 80px;
+    padding: 10px 50px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    text-transform: uppercase;
-    font-size: 13px;
+    font-size: 15px;
     -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
     box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
-    margin: 5px 20px 40px 20px;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
@@ -20,14 +18,21 @@
     transition: all 0.3s ease-in-out;
 }
 
-.coronabtn:hover{
+.btn-corona:hover {
     background-color: #D6666E;
 }
 
-.coronabtn:active {
+.btn-corona:active {
     -moz-transform: scale(0.95);
     -webkit-transform: scale(0.95);
     -o-transform: scale(0.95);
     -ms-transform: scale(0.95);
     transform: scale(0.95);
-  }
+}
+.btn-corona-popup{
+    margin-top: 10px;
+    padding: 7px 20px;
+}
+.popup{
+    margin-bottom: 10px;
+}
