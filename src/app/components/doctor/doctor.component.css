@@ -1,0 +1,30 @@
+.btn-corona {
+    background-color: #C2666E;
+    border: none;
+    color: white;
+    padding: 15px 80px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(194, 194, 194, 0.7);
+    box-shadow: 0 10px 30px 0 rgba(194, 194, 194, 0.7);
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-corona:hover {
+    background-color: #D6666E;
+}
+
+.btn-corona:active {
+    -moz-transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    transform: scale(0.95);
+}

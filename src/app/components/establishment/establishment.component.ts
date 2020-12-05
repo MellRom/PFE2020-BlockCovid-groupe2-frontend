@@ -74,7 +74,7 @@ export class EstablishmentComponent implements OnInit {
         { qr: this.qrdata, fit: '175', eccLevel: 'Q', alignment: 'center' }
       ],
       footer: [
-        { text: 'Groupe 2 - IPL', style: 'footer' }
+        { text: '© Groupe 2 - IPL', style: 'footer' }
       ],
       styles: {
         data: {

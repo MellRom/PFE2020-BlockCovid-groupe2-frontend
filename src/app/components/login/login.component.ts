@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
-  connected = false;
+  connected: boolean;
 
   constructor(private formBuilder: FormBuilder,
     private apiService: ApiService,
@@ -31,10 +31,10 @@ export class LoginComponent implements OnInit {
 
 
   get f() { return this.loginForm.controls; }
-
+  
   onSubmit() {
     this.submitted = true;
-
+    this.connected = true;
     if (this.loginForm.invalid) {
       return;
     }
@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit {
           this.cookieService.set("web_user_id", data.user_id, { expires: 1, sameSite: 'Lax' });
           this.cookieService.set("web_user_role", data.role, { expires: 1, sameSite: 'Lax' });
           this.cookieService.set("web_user_username", this.f.username.value, { expires: 1, sameSite: 'Lax' });     
-          this.connected = true;
 
           if (data.role === 'doctor') {
             window.location.href = '/doctor'
@@ -55,6 +54,7 @@ export class LoginComponent implements OnInit {
           }
         },
         error => {
+          this.connected = false;
           console.log(error);
           this.f.clear;
         }

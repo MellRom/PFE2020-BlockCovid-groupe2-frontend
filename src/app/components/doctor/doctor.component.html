@@ -1,8 +1,12 @@
-<div>
-    <button class="bnt btn-primary" (click)="generateQrCode()">Générer un QR Code</button>
-    <div style="text-align: center; display: inline-block; padding: 50px;">
-        <qrcode  *ngIf=(generateCode) [qrdata]="qrdata"[size]="124" [level]="'M'"></qrcode>
+<div class="card text-center">
+    <div class="card-header">
+        Quoi de neuf docteur ? 
+    </div>
+    <div class="card-body">
+        <div *ngIf=(generateCode) >
+            <qrcode [qrdata]="qrdata" [size]="200" [level]="'M'"></qrcode>
+            <button (click)="generatePdf()" class="btn-corona" style="margin-bottom: 25px;">Imprimer .pdf</button>
+        </div>
+        <button class="btn-corona" (click)="generateQrCode()">Générer code Qr</button>
     </div>
 </div>
-
-
