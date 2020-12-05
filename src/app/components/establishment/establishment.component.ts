@@ -50,7 +50,7 @@ export class EstablishmentComponent implements OnInit {
   genereateQrCode(id, name, description): void {
     this.generateCode = true;
     console.log(id, name, description);
-    this.qrdata = "id:'" + id + "', name:'" + name + "', description:'" + description + "'";
+    this.qrdata = "statut: 'place', id:'" + id + "', name:'" + name + "', description:'" + description + "'";
   }
 
   generatePdf(placeName, placeDescription) {
