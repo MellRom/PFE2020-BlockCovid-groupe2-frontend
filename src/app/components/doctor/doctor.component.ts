@@ -27,6 +27,6 @@ export class DoctorComponent implements OnInit {
     this.generateCode = true;
     console.log(this.currentDate);
     
-    this.qrdata = "statut: 'covid', id:'" + this.cookieService.get("web_user_id") + ", date: '" + this.currentDate +"'";
+    this.qrdata = "statut: 'covid', id:'" + this.cookieService.get("web_user_id") + "', date: '" + this.currentDate +"'";
   }
 }
