@@ -13,7 +13,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 export class DoctorComponent implements OnInit {
   pipe = new DatePipe('en-US');
-  currentDate = this.pipe.transform(Date.now(), 'dd/MM/y HH:mm:ss');
+  currentDate: string;
   generateCode = false;
   qrdata: string = null;
 
@@ -28,6 +28,7 @@ export class DoctorComponent implements OnInit {
 
   generateQrCode() {
     this.generateCode = true;
+    this.currentDate = this.pipe.transform(Date.now(), 'dd/MM/y HH:mm:ss')
     console.log(this.currentDate);
     
     this.qrdata = "statut: 'covid', id:'" + this.cookieService.get("web_user_id") + "', date: '" + this.currentDate +"'";
