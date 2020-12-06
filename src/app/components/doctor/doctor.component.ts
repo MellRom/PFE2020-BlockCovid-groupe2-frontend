@@ -66,6 +66,6 @@ export class DoctorComponent implements OnInit {
         }
       }
     };
-    pdfMake.createPdf(documentDefinition).open();
+    pdfMake.createPdf(documentDefinition).print();
   }
 }
