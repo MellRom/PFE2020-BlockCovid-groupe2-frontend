@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/services/api/api.service'
 import { IPlace } from 'src/app/models/place'
 import { CookieService } from 'ngx-cookie-service';
 import { Router, RouterLink } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -18,11 +19,14 @@ export class EstablishmentComponent implements OnInit {
   qrdata: string = null;
   showTable: boolean = false;
   generateCode: boolean = false;
+  submitted: boolean = false;
   qrCode: string = null;
   addPlaceIsActive: boolean = false;
+  addPlaceForm: FormGroup;
 
   constructor(private apiService: ApiService,
     private cookieService: CookieService,
+    private formBuilder: FormBuilder,
     private router: Router) {
     this.showPlace()
   }
@@ -31,11 +35,40 @@ export class EstablishmentComponent implements OnInit {
     if (this.cookieService.get("web_user_role") != 'establishment') {
       this.router.navigate(['/**'])
     }
+    
+    this.addPlaceForm = this.formBuilder.group({
+      placeName: ['', Validators.required],
+      placeDescription: ['', Validators.required]
+    });
   }
 
   addPlaceActivation(): void{
-    this.addPlaceIsActive = true;
-    console.log(this.addPlaceIsActive);
+    this.addPlaceIsActive = !this.addPlaceIsActive;
+    if(!this.addPlaceIsActive){
+      this.showPlace();
+    }
+  }
+
+  get f() { return this.addPlaceForm.controls; }
+
+  onSubmitPlace(): void {
+    this.submitted = true;
+
+    if (this.addPlaceForm.invalid) {
+      return;
+    }
+
+    this.apiService.addPlace(this.f.placeName.value, this.f.placeDescription.value, this.cookieService.get("web_user_id"))
+      .subscribe(
+        data => {
+          this.qrdata = "'name': " + this.f.placeName.value + ", 'description': " + this.f.placeDescription.value + ", 'id_establishment': " + this.cookieService.get("web_user_id");
+          this.generatePdf(this.f.placeName.value, this.f.placeDescription.value);
+        },
+        error => {
+          console.log(error);
+          this.f.clear;
+        }
+      )
   }
 
   showPlace(): void {

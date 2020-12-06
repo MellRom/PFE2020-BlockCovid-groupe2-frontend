@@ -5,10 +5,41 @@
                 Liste de vos emplacements
             </h1>
         </div>
-        <div class="card-body">
-            <div *ngIf="addPlaceIsActive">
-                <app-add-place [generatePdf]="generatePdf"></app-add-place>
+
+        <div *ngIf="addPlaceIsActive" class="wrapper fadeInDown above-card">
+            <div id="formContent">
+                <!-- Tabs Titles -->
+                <div class="fadeIn first">
+                    <img style="width: 75px;height: auto;" src="../../assets/images/connexionImage.jpg" id="icon"
+                        alt="User Icon" />
+                </div>
+                <form [formGroup]="addPlaceForm" (ngSubmit)="onSubmitPlace()">
+                    <div class="form-group">
+                        <input type="text" id="placeName" class="fadeIn second" formControlName="placeName"
+                            placeholder="Nom du lieu" [ngClass]="{ 'invalid': submitted && f.placeName.errors }" />
+                        <div *ngIf="submitted && f.placeName.errors != null" class="alert alert-danger">
+                            Nom manquant
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="placeDescription" class="fadeIn third"
+                                formControlName="placeDescription" placeholder="Description"
+                                [ngClass]="{ 'invalid': submitted && f.placeDescription.errors }" />
+                            <div *ngIf="submitted && f.placeDescription.errors != null" class="alert alert-danger">
+                                Description manquante
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn-corona" value="Ajouter un lieu" />
+                        </div>
+                        <div id="formFooter">
+                            <a class="underlineHover" (click)="addPlaceActivation()">Retour</a>
+                        </div>
+                    </div>
+                </form>
             </div>
+
+        </div>
+        <div class="card-body">
             <div style="text-align: center; margin: auto; padding-bottom: 20px;">
                 <button class="btn-corona" (click)="addPlaceActivation()">Ajouter un lieu</button>
             </div>

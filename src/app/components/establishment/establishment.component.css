@@ -5,3 +5,8 @@
 .popup{
     margin-bottom: 10px;
 }
+.above-card{
+    position: absolute;
+    margin-top: -100px;
+    opacity: 0.5;
+}
