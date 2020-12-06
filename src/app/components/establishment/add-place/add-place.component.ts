@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from 'src/app/services/api/api.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
-  selector: 'app-ajout-place',
+  selector: 'app-add-place',
   templateUrl: './add-place.component.html',
   styleUrls: ['./add-place.component.css']
 })
 export class AddPlaceComponent implements OnInit {
+  @Input() generatePdf: (name: string, decription: string) => void;
   addPlaceForm: FormGroup;
-  submitted = false;
+  submitted: boolean = false;
   qrdata: string = null;
-  codeGenerated: boolean;
 
   constructor(private formBuilder: FormBuilder,
     private apiService: ApiService,
@@ -30,28 +30,26 @@ export class AddPlaceComponent implements OnInit {
 
   get f() { return this.addPlaceForm.controls; }
 
-  onSubmitPlace() {
+  onSubmitPlace(): void {
     this.submitted = true;
 
     if (this.addPlaceForm.invalid) {
       return;
     }
-    
+
     this.apiService.addPlace(this.f.placeName.value, this.f.placeDescription.value, this.cookieService.get("web_user_id"))
       .subscribe(
         data => {
-          this.genereateQrCode();
-          this.codeGenerated = true;
+          this.qrdata = "'name': " + this.f.placeName.value + ", 'description': " + this.f.placeDescription.value + ", 'id_establishment': " + this.cookieService.get("web_user_id");
+          console.log(this.f.placeName.value);
+          
+          this.generatePdf(this.f.placeName.value, this.f.placeDescription.value);
+
         },
         error => {
           console.log(error);
           this.f.clear;
         }
       )
-  }
-
-  genereateQrCode(): void {
-    console.log(this.cookieService.get("web_user_id"));
-    this.qrdata = "'name': " + this.f.placeName.value + ", 'description': " + this.f.placeDescription.value + ", 'id_establishment': " + this.cookieService.get("web_user_id");
   }
 }

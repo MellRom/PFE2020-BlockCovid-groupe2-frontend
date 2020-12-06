@@ -6,8 +6,11 @@
             </h1>
         </div>
         <div class="card-body">
+            <div *ngIf="addPlaceIsActive">
+                <app-add-place [generatePdf]="generatePdf"></app-add-place>
+            </div>
             <div style="text-align: center; margin: auto; padding-bottom: 20px;">
-                <button class="btn-corona" routerLink="/ajout-lieu">Ajouter un lieu</button>
+                <button class="btn-corona" (click)="addPlaceActivation()">Ajouter un lieu</button>
             </div>
             <table *ngIf=(showTable) class="table table-striped">
                 <thead>
@@ -23,7 +26,7 @@
                         <th scope="row">{{place.place_id}}</th>
                         <td>{{place.name}}</td>
                         <td>{{place.description}}</td>
-                        <td (click)="genereateQrCode(place.place_id, place.name, place.description)">
+                        <td (click)="generateQrCode(place.place_id, place.name, place.description)">
                             <ng-template #popContent>
                                 <div class="popup">
                                     <qrcode [qrdata]="qrdata" [size]="124" [level]="'M'"></qrcode>

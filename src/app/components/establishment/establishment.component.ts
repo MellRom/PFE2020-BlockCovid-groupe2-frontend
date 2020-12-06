@@ -14,12 +14,12 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
   styleUrls: ['./establishment.component.css']
 })
 export class EstablishmentComponent implements OnInit {
-  table = null;
   places: IPlace[];
   qrdata: string = null;
-  showTable = false;
-  generateCode = false;
+  showTable: boolean = false;
+  generateCode: boolean = false;
   qrCode: string = null;
+  addPlaceIsActive: boolean = false;
 
   constructor(private apiService: ApiService,
     private cookieService: CookieService,
@@ -33,7 +33,12 @@ export class EstablishmentComponent implements OnInit {
     }
   }
 
-  showPlace() {
+  addPlaceActivation(): void{
+    this.addPlaceIsActive = true;
+    console.log(this.addPlaceIsActive);
+  }
+
+  showPlace(): void {
     this.showTable = true;
     console.log(this.cookieService.get("web_user_id"));
     this.apiService.listPlace(this.cookieService.get("web_user_id"))
@@ -49,13 +54,15 @@ export class EstablishmentComponent implements OnInit {
 
   }
 
-  genereateQrCode(id, name, description): void {
+  generateQrCode(id, name, description): void {
     this.generateCode = true;
     console.log(id, name, description);
     this.qrdata = "statut: 'place', id:'" + id + "', name:'" + name + "', description:'" + description + "'";
   }
 
-  generatePdf(placeName, placeDescription) {
+  generatePdf(placeName, placeDescription): void {
+    console.log("Coucou");
+    
     const documentDefinition = {
       pageSize: 'A5',
       pageOrientation: 'landscape',
@@ -90,7 +97,7 @@ export class EstablishmentComponent implements OnInit {
         }
       }
     };
-    pdfMake.createPdf(documentDefinition).open();
+    pdfMake.createPdf(documentDefinition).print();
   }
 }
 

@@ -1,4 +1,4 @@
-<div class="wrapper fadeInDown">
+<div class="wrapper fadeInDown above-card">
     <div id="formContent">
         <!-- Tabs Titles -->
         <div class="fadeIn first">
@@ -20,13 +20,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="submit" class="fadeIn fourth" value="Ajouter un lieu" />
-                </div>
-                <div class="form-group">
-                    <div *ngIf="submitted && f.placeDescription.errors == null && f.placeName.errors == null && codeGenerated"
-                        class="d-flex justify-content-center qrcode">
-                        <qrcode [qrdata]="qrdata" [size]="124" [level]="'M'"></qrcode>
-                    </div>
+                    <input type="submit" class="btn-corona" value="Ajouter un lieu" />
                 </div>
                 <div id="formFooter">
                     <a class="underlineHover" routerLink="/establishment">Retour</a>

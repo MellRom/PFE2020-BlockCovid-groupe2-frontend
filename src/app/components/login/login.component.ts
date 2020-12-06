@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  submitted = false;
+  submitted: boolean = false;
   connected: boolean;
 
   constructor(private formBuilder: FormBuilder,

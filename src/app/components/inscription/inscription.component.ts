@@ -36,7 +36,7 @@ export class InscriptionComponent implements OnInit {
 
   get f() { return this.inscriptionForm.controls; }
 
-  onSubmit() {
+  onSubmit(): void {
     console.log("on submit");
     this.submitted = true;    
     /*if (this.inscriptionForm.invalid) {
