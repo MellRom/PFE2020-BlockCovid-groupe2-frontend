@@ -26,6 +26,7 @@ export class AppComponent {
 
     if (this.cookieService.get("web_user_id") == null) {
       this.connected = false;
+      
     } else {
       this.connected = true;
       this.username = this.cookieService.get("web_user_username");

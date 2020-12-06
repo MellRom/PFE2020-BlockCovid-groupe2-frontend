@@ -35,9 +35,11 @@ export class EstablishmentComponent implements OnInit {
 
   showPlace() {
     this.showTable = true;
+    console.log(this.cookieService.get("web_user_id"));
     this.apiService.listPlace(this.cookieService.get("web_user_id"))
       .subscribe(
         data => {
+          console.log(data)
           this.places = data
         },
         error => {

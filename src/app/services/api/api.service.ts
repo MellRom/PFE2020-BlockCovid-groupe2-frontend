@@ -22,12 +22,17 @@ export class ApiService {
   }
   inscription(login, name, role, password, adress) {
     console.log(login);
+    console.log(name);
+    console.log(role);
+    console.log(password);
+    console.log(adress);
+
     return this.http.post<any>(environment.api_url + '/inscription', { "login": login, "password": password, "role": role, "name": name, "adress": adress })
   }
   listPlace(id_establishment) {
-    return this.http.post<any>(environment.api_url + '/establishment/list_places', { "id_establishment": id_establishment })
+    return this.http.post<any>(environment.api_url + '/establishment/list_places', { "user_id": id_establishment })
   }
   addPlace(placeName, placeDescription, id_establishment) {
-    return this.http.post<any>(environment.api_url + '/establishment/insert_place', { "name": placeName, "description": placeDescription, "id_establishment": id_establishment })
+    return this.http.post<any>(environment.api_url + '/establishment/insert_place', { "name": placeName, "description": placeDescription, "webUser": {"user_id": id_establishment} })
   }
 }
