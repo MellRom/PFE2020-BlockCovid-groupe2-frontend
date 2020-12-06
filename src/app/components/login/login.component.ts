@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted: boolean = false;
-  connected: boolean;
+  isConnected: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
     private apiService: ApiService,
@@ -29,12 +29,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
-
   get f() { return this.loginForm.controls; }
   
   onSubmit() {
     this.submitted = true;
-    this.connected = true;
+    this.isConnected = true;
     if (this.loginForm.invalid) {
       return;
     }
@@ -54,7 +53,7 @@ export class LoginComponent implements OnInit {
           }
         },
         error => {
-          this.connected = false;
+          this.isConnected = false;
           console.log(error);
           this.f.clear;
         }

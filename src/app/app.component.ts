@@ -12,20 +12,16 @@ export class AppComponent {
   title = 'BlockCovid';
   connected: boolean = false;
   username: string = null;
-  is_doctor: boolean;
+  is_doctor: boolean = false;
   constructor(
     private cookieService: CookieService,
     private router: Router) {}
 
   ngOnInit(): void {
-    console.log(this.cookieService.getAll());
-    console.log(this.connected);
-    console.log(this.username);
-    console.log(this.is_doctor);
-    
 
-    if (this.cookieService.get("web_user_id") == null) {
+    if (this.cookieService.get("web_user_id") == '') {
       this.connected = false;
+      console.log("coucou");
       
     } else {
       this.connected = true;
