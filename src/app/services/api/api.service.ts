@@ -29,4 +29,7 @@ export class ApiService {
   addPlace(placeName, placeDescription, id_establishment) {
     return this.http.post<any>(environment.api_url + '/establishment/insert_place', { "name": placeName, "description": placeDescription, "webUser": {"user_id": id_establishment} })
   }
+  modifyPlace(place_id, place_name, place_description) {
+    return this.http.post<any>(environment.api_url + '/establishment/modify_place', { "id": place_id , "name": place_name, "description": place_description})
+  }
 }

@@ -73,6 +73,15 @@ export class EstablishmentComponent implements OnInit {
 
   modifyPlace(place_id, place_name, place_description){
     //TODO waiting for back
+    this.apiService.modifyPlace(place_id, place_name, place_description)
+    .subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
   showPlace(): void {
