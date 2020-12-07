@@ -12,12 +12,14 @@ import { DoctorComponent } from './components/doctor/doctor.component';
 import { EstablishmentComponent } from './components/establishment/establishment.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: 'doctor', component: DoctorComponent },
   { path: 'establishment', component: EstablishmentComponent },
+  { path: '', component: WelcomeComponent},
   { path: '**', component: PageNotFoundComponent}
 ];
 
@@ -29,6 +31,7 @@ const appRoutes: Routes = [
     DoctorComponent,
     EstablishmentComponent,
     PageNotFoundComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,

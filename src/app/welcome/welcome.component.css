@@ -1,0 +1,11 @@
+.img-corona{
+    width: 150px;
+    height: auto;
+    display: inline-block;
+}
+
+.text-corona{
+    display: inline-block;
+    font-family: Arial, sans-serif;
+    font-size: 23px;
+}
