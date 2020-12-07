@@ -10,13 +10,13 @@
 
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <input type="text" id="username" class="fadeIn second" formControlName="username" placeholder="Pseudo"
+          <input type="text" id="username" class="fadeIn second text-component" formControlName="username" placeholder="Pseudo"
             [ngClass]="{ 'invalid': submitted && f.username.errors }" />
           <div *ngIf="submitted && f.username.errors != null" class="alert alert-danger">
             Pseudo manquant
           </div>
           <div class="form-group">
-            <input type="password" id="password" class="fadeIn third" formControlName="password"
+            <input type="password" id="password" class="fadeIn third password-component" formControlName="password"
               placeholder="Mot de passe" [ngClass]="{ 'invalid': submitted && f.password.errors }" />
             <div *ngIf="submitted && f.password.errors != null" class="alert alert-danger">
               Mot de passe manquant

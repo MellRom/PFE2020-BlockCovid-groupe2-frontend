@@ -10,3 +10,8 @@
     margin-top: -150px;
     opacity: 0.5;
 }
+
+.back-component{
+    cursor: pointer;
+    color: #D6666E;
+}

@@ -36,6 +36,6 @@ export class AppComponent {
     this.cookieService.deleteAll();
     this.username = null;
     this.connected = false;
-    this.router.navigate(['/login'])
+    this.router.navigate([''])
   }
 }

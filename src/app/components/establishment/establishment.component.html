@@ -9,19 +9,15 @@
         <div *ngIf="addPlaceIsActive" class="wrapper fadeInDown above-card">
             <div id="formContent">
                 <!-- Tabs Titles -->
-                <div class="fadeIn first">
-                    <img style="width: 75px;height: auto;" src="../../assets/images/connexionImage.jpg" id="icon"
-                        alt="User Icon" />
-                </div>
                 <form [formGroup]="addPlaceForm" (ngSubmit)="onSubmitPlace()">
                     <div class="form-group">
-                        <input type="text" id="placeName" class="fadeIn second" formControlName="placeName"
+                        <input type="text" id="placeName" class="fadeIn second text-component" formControlName="placeName"
                             placeholder="Nom du lieu" [ngClass]="{ 'invalid': submitted && f.placeName.errors }" />
                         <div *ngIf="submitted && f.placeName.errors != null" class="alert alert-danger">
                             Nom manquant
                         </div>
                         <div class="form-group">
-                            <input type="text" id="placeDescription" class="fadeIn third"
+                            <input type="text" id="placeDescription" class="fadeIn third text-component"
                                 formControlName="placeDescription" placeholder="Description"
                                 [ngClass]="{ 'invalid': submitted && f.placeDescription.errors }" />
                             <div *ngIf="submitted && f.placeDescription.errors != null" class="alert alert-danger">
@@ -32,7 +28,7 @@
                             <input type="submit" class="btn-corona" value="Ajouter un lieu" />
                         </div>
                         <div id="formFooter">
-                            <a class="underlineHover" (click)="addPlaceActivation()">Retour</a>
+                            <a class="underlineHover back-component" (click)="addPlaceActivation()">Retour</a>
                         </div>
                     </div>
                 </form>
@@ -73,8 +69,8 @@
                         <td>
                             <ng-template #popContentModify>
                                 <div class="popup">
-                                    <input class="form-control" #nameModify placeholder="Nom" type="text">
-                                    <input class="form-control" #descriptionModify placeholder="Description" type="text">                                                                        
+                                    <input class="text-component" #nameModify placeholder="Nom" type="text">
+                                    <input class="text-component" #descriptionModify placeholder="Description" type="text">                                                                        
                                     <button class="btn-corona btn-corona-popup"
                                         (click)="modifyPlace(place.place_id,nameModify.value,descriptionModify.value)">Modifier</button>
                                 </div>
