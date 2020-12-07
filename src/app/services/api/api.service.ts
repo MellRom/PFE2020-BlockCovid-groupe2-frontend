@@ -21,12 +21,6 @@ export class ApiService {
     return this.http.post<any>(environment.api_url + '/connexion', { "login": username, "password": password })
   }
   inscription(login, name, role, password, adress) {
-    console.log(login);
-    console.log(name);
-    console.log(role);
-    console.log(password);
-    console.log(adress);
-
     return this.http.post<any>(environment.api_url + '/inscription', { "login": login, "password": password, "role": role, "name": name, "adress": adress })
   }
   listPlace(id_establishment) {

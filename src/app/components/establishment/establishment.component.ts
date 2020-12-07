@@ -71,6 +71,10 @@ export class EstablishmentComponent implements OnInit {
       )
   }
 
+  modifyPlace(place_id, place_name, place_description){
+    //TODO waiting for back
+  }
+
   showPlace(): void {
     this.showTable = true;
     console.log(this.cookieService.get("web_user_id"));

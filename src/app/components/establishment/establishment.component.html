@@ -73,14 +73,14 @@
                         <td>
                             <ng-template #popContentModify>
                                 <div class="popup">
-                                    <input name="" class="form-control" formControlName="nameModify" placeholder="Nom" type="text">
-                                    <input name="" class="form-control" formControlName="descriptionModify" placeholder="Description" type="text">                                                                        
+                                    <input class="form-control" #nameModify placeholder="Nom" type="text">
+                                    <input class="form-control" #descriptionModify placeholder="Description" type="text">                                                                        
                                     <button class="btn-corona btn-corona-popup"
-                                        (click)="modifyPlace()">Valider</button>
+                                        (click)="modifyPlace(place.place_id,nameModify.value,descriptionModify.value)">Modifier</button>
                                 </div>
                             </ng-template>
                             <button class="btn-corona" placement="right" [ngbPopover]="popContentModify"
-                                popoverTitle="Modifier {{place.name}}">Modifier
+                            [autoClose]="false" popoverTitle="Modifier {{place.name}}">Modifier
                             </button>
                         </td>
                     </tr>
