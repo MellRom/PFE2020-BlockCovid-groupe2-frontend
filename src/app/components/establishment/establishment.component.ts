@@ -72,11 +72,11 @@ export class EstablishmentComponent implements OnInit {
   }
 
   modifyPlace(place_id, place_name, place_description){
-    //TODO waiting for back
-    this.apiService.modifyPlace(place_id, place_name, place_description)
+    this.apiService.modifyPlace(place_id, place_name, place_description, this.cookieService.get("web_user_id"))
     .subscribe(
       data => {
         console.log(data);
+        window.location.href = '/establishment'
       },
       error => {
         console.log(error);
