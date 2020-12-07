@@ -50,6 +50,7 @@
                         <th scope="col">Nom</th>
                         <th scope="col">Description</th>
                         <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,6 +69,9 @@
                             <button class="btn-corona" placement="right" [ngbPopover]="popContent"
                                 popoverTitle="QR Code pour {{place.name}}">Générer Code QR
                             </button>
+                        </td>
+                        <td>
+                            <button class="btn-corona" placement="right" (click)="modifyPlace(place.name, place.description)">Modifier</button>
                         </td>
                     </tr>
                 </tbody>
