@@ -1,0 +1,30 @@
+<div class="my-container">
+    <nav class="navbar navbar-light" style="background-color: #C2666E; height: 90px; ">
+        <div style="display: inline-block;">
+            <a routerLink="">
+                <img src="../assets/images/BlockCovid.png" style="width: 75px; height: 75px; margin-bottom: 25px;">
+                <h1 class="title-header">{{title}}</h1>
+            </a>
+        </div>
+        <div style="float: right; ">
+            <h1 *ngIf="username != null" target="_blank" class="welcome-header" style="margin-bottom: 25px;">
+                Bienvenue {{username}}
+            </h1>
+        </div>
+        <div>
+            <a *ngIf=(!connected) class="btn-corona-header" routerLink="/login"
+                routerLinkActive="activebutton">Connexion</a>
+            <a *ngIf=(!connected) class="btn-corona-header" routerLink="/inscription"
+                routerLinkActive="activebutton">Inscription</a>
+            <a *ngIf="connected && is_doctor" class="btn-corona-header" routerLink="/doctor"
+                routerLinkActive="activebutton">Médecin</a>
+            <a *ngIf="connected && !is_doctor" class="btn-corona-header" routerLink="/establishment"
+                routerLinkActive="activebutton">Etablissement</a>
+            <a *ngIf=(connected) (click)="deconnexion()" class="log-out-button" routerLink="/establishment"
+                routerLinkActive="activebutton">
+            </a>
+        </div>
+    </nav>
+    <router-outlet></router-outlet>
+
+</div>

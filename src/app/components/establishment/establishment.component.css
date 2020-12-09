@@ -1,0 +1,17 @@
+.btn-corona-popup{
+    margin-top: 10px;
+    padding: 7px 20px;
+}
+.popup{
+    margin-bottom: 10px;
+}
+.above-card{
+    position: absolute;
+    
+    opacity: 0.5;
+}
+
+.back-component{
+    cursor: pointer;
+    color: #D6666E;
+}

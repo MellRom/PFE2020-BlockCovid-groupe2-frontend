@@ -1,0 +1,22 @@
+.img-corona{
+    width: 150px;
+    height: auto;
+    display: inline-block;
+}
+
+.text-corona{
+    display: inline-block;
+    font-family: Arial, sans-serif;
+    font-size: 23px;
+    color:  #C2666E;
+}
+
+.text-corona-secondary{
+    background-color: #D6666E;
+    color: white;
+    padding: 8px 8px 8px 8px ;
+    margin-top: 50px;
+    border: 2px solid  #D6666E; 
+    border-radius: 25px;
+    font-size: 30px;
+}
