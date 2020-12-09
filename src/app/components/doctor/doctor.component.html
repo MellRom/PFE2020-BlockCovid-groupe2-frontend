@@ -3,10 +3,6 @@
         Quoi de neuf docteur ? 
     </div>
     <div class="card-body">
-        <div *ngIf=(generateCode) >
-            <qrcode [qrdata]="qrdata" [size]="200" [level]="'M'"></qrcode>
-            <button (click)="generatePdf()" class="btn-corona" style="margin-bottom: 25px;">Imprimer .pdf</button>
-        </div>
         <button class="btn-corona" (click)="generateQrCode()">Générer code Qr</button>
     </div>
 </div>

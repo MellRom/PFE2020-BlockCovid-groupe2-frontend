@@ -24,27 +24,27 @@ export class InscriptionComponent implements OnInit {
     private apiService: ApiService,
     private router: Router) { }
 
-    ngOnInit(): void {
-      this.inscriptionForm = this.formBuilder.group({
-        login: ['', Validators.required],
-        name: ['', Validators.required],
-        role: ['', Validators.required],
-        password: ['', Validators.required],
-        adress: ['', Validators.required]
-      });
-    }
+  ngOnInit(): void {
+    this.inscriptionForm = this.formBuilder.group({
+      login: ['', Validators.required],
+      name: ['', Validators.required],
+      role: ['', Validators.required],
+      password: ['', Validators.required],
+      adress: ['', Validators.required]
+    });
+  }
 
   get f() { return this.inscriptionForm.controls; }
 
   onSubmit(): void {
     console.log("on submit");
-    this.submitted = true;    
+    this.submitted = true;
     /*if (this.inscriptionForm.invalid) {
       console.log("invalid");
       return;
     }*/
-    let role ='role';
-    if(this.f.role.value==='Médecin'){
+    let role = 'role';
+    if (this.f.role.value === 'Médecin') {
       role = 'doctor'
     } else {
       role = 'establishment'
@@ -52,18 +52,15 @@ export class InscriptionComponent implements OnInit {
 
     this.loading = true;
     this.apiService.inscription(this.f.login.value, this.f.name.value, role, this.f.password.value, this.f.adress.value)
-    .subscribe(
-      data => {
-        console.log(data);
-        if(data.role==='doctor'){
-          this.router.navigate(['/doctor'])
-        }else{
-          this.router.navigate(['/establishment'])
+      .subscribe(
+        data => {
+          console.log(data);
+          this.router.navigate(['']);
+
+        },
+        error => {
+          this.loading = false;
         }
-      },
-      error => {
-        this.loading = false;
-      }
-    )
+      )
   }
 }

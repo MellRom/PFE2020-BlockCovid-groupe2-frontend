@@ -14,7 +14,6 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 export class DoctorComponent implements OnInit {
   pipe = new DatePipe('en-US');
   currentDate: string;
-  generateCode = false;
   qrdata: string = null;
 
   constructor(private cookieService: CookieService,
@@ -27,11 +26,11 @@ export class DoctorComponent implements OnInit {
   }
 
   generateQrCode() {
-    this.generateCode = true;
     this.currentDate = this.pipe.transform(Date.now(), 'yyyy-MM-dd HH:mm:ss.000000000')
     console.log(this.currentDate);
     
     this.qrdata = "statut: 'covid', id:'" + this.cookieService.get("web_user_id") + "', date: '" + this.currentDate +"'";
+    this.generatePdf();
   }
 
   generatePdf() {

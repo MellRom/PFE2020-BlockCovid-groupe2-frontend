@@ -63,6 +63,9 @@ export class EstablishmentComponent implements OnInit {
         data => {
           this.qrdata = "'name': " + this.f.placeName.value + ", 'description': " + this.f.placeDescription.value + ", 'id_establishment': " + this.cookieService.get("web_user_id");
           this.generatePdf(this.f.placeName.value, this.f.placeDescription.value);
+          this.addPlaceForm.reset();
+          this.addPlaceActivation();
+          this.submitted = false;
         },
         error => {
           console.log(error);
