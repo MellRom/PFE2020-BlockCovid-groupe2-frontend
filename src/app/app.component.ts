@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -19,14 +20,13 @@ export class AppComponent {
 
   ngOnInit(): void {
 
-    if (this.cookieService.get("web_user_id") == '') {
+    if (environment.decryptData(this.cookieService.get("web_user_id")) == '') {
       this.connected = false;
-      console.log("coucou");
       
     } else {
       this.connected = true;
-      this.username = this.cookieService.get("web_user_username");
-      if (this.cookieService.get("web_user_role") == "doctor") {
+      this.username = environment.decryptData(this.cookieService.get("web_user_username"));
+      if (environment.decryptData(this.cookieService.get("web_user_role")) == "doctor") {
         this.is_doctor = true
       }
     }

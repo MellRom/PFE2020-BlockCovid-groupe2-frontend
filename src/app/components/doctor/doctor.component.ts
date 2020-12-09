@@ -1,9 +1,10 @@
-import { DatePipe, formatDate, getLocaleDateTimeFormat } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { environment } from 'src/environments/environment';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -20,15 +21,13 @@ export class DoctorComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    if (this.cookieService.get("web_user_role") != 'doctor') {
+    if (environment.decryptData(this.cookieService.get("web_user_role")) != 'doctor') {
       this.router.navigate(['**'])
     }
   }
 
   generateQrCode() {
-    this.currentDate = this.pipe.transform(Date.now(), 'yyyy-MM-dd HH:mm:ss.000000000')
-    console.log(this.currentDate);
-    
+    this.currentDate = this.pipe.transform(Date.now(), 'yyyy-MM-dd HH:mm:ss.000000000')    
     this.qrdata = "statut: 'covid', id:'" + this.cookieService.get("web_user_id") + "', date: '" + this.currentDate +"'";
     this.generatePdf();
   }

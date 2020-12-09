@@ -1,11 +1,32 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-
+import * as CryptoJS from'crypto-js';
 export const environment = {
   production: false,
   //api_url: 'http://localhost:8080'
-  api_url: 'https://blockcovid-pfeipl-groupe2-back.herokuapp.com'
+  api_url: 'https://blockcovid-pfeipl-groupe2-back.herokuapp.com',
+  encryptSecretKey: "projetPFE-IPL",
+  encryptData(data) {
+
+    try {
+      return CryptoJS.AES.encrypt(JSON.stringify(data), this.encryptSecretKey).toString();
+    } catch (e) {
+      console.log(e);
+    }
+  },
+
+  decryptData(data) {
+    try {
+      const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
+      if (bytes.toString()) {
+        return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+      }
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
 };
 
 /*

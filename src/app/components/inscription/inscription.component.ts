@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IWebUser } from 'src/app/models/webUser';
 import { ApiService } from 'src/app/services/api/api.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inscription',
@@ -37,7 +37,6 @@ export class InscriptionComponent implements OnInit {
   get f() { return this.inscriptionForm.controls; }
 
   onSubmit(): void {
-    console.log("on submit");
     this.submitted = true;
     /*if (this.inscriptionForm.invalid) {
       console.log("invalid");
@@ -54,7 +53,6 @@ export class InscriptionComponent implements OnInit {
     this.apiService.inscription(this.f.login.value, this.f.name.value, role, this.f.password.value, this.f.adress.value)
       .subscribe(
         data => {
-          console.log(data);
           this.router.navigate(['']);
 
         },

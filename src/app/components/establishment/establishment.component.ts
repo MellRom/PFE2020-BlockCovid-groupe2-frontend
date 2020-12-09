@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api/api.service'
 import { IPlace } from 'src/app/models/place'
 import { CookieService } from 'ngx-cookie-service';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { environment } from 'src/environments/environment';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 
@@ -32,7 +33,7 @@ export class EstablishmentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.cookieService.get("web_user_role") != 'establishment') {
+    if (environment.decryptData(this.cookieService.get("web_user_role")) != 'establishment') {
       this.router.navigate(['/**'])
     }
     
@@ -78,7 +79,6 @@ export class EstablishmentComponent implements OnInit {
     this.apiService.modifyPlace(place_id, place_name, place_description, this.cookieService.get("web_user_id"))
     .subscribe(
       data => {
-        console.log(data);
         window.location.href = '/establishment'
       },
       error => {
@@ -93,7 +93,6 @@ export class EstablishmentComponent implements OnInit {
     this.apiService.listPlace(this.cookieService.get("web_user_id"))
       .subscribe(
         data => {
-          console.log(data)
           this.places = data
         },
         error => {
@@ -105,12 +104,10 @@ export class EstablishmentComponent implements OnInit {
 
   generateQrCode(id, name, description): void {
     this.generateCode = true;
-    console.log(id, name, description);
     this.qrdata = "statut: 'place', id:'" + id + "', name:'" + name + "', description:'" + description + "'";
   }
 
   generatePdf(placeName, placeDescription): void {
-    console.log("Coucou");
     
     const documentDefinition = {
       pageSize: 'A5',
