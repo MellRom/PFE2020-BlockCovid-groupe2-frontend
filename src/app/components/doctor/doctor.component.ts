@@ -28,7 +28,7 @@ export class DoctorComponent implements OnInit {
 
   generateQrCode() {
     this.currentDate = this.pipe.transform(Date.now(), 'yyyy-MM-dd HH:mm:ss.000000000')    
-    this.qrdata = "statut: 'covid', id:'" + this.cookieService.get("web_user_id") + "', date: '" + this.currentDate +"'";
+    this.qrdata = "statut: 'covid', id:'" + environment.decryptData(this.cookieService.get("web_user_id")) + "', date: '" + this.currentDate +"'";
     this.generatePdf();
   }
 
