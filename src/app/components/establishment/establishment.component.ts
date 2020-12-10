@@ -58,17 +58,17 @@ export class EstablishmentComponent implements OnInit {
     if (this.addPlaceForm.invalid) {
       return;
     }
-
-    this.apiService.addPlace(this.f.placeName.value, this.f.placeDescription.value, this.cookieService.get("web_user_id"))
+      
+    this.apiService.addPlace(this.f.placeName.value, this.f.placeDescription.value, environment.decryptData(this.cookieService.get("web_user_id")))
       .subscribe(
-        data => {
-          this.qrdata = "'name': " + this.f.placeName.value + ", 'description': " + this.f.placeDescription.value + ", 'id_establishment': " + this.cookieService.get("web_user_id");
+        data => {          
+          this.qrdata = "'name': " + this.f.placeName.value + ", 'description': " + this.f.placeDescription.value + ", 'id_establishment': " + environment.decryptData(this.cookieService.get("web_user_id"));
           this.generatePdf(this.f.placeName.value, this.f.placeDescription.value);
           this.addPlaceForm.reset();
           this.addPlaceActivation();
           this.submitted = false;
         },
-        error => {
+        error => {          
           console.log(error);
           this.f.clear;
         }
@@ -76,7 +76,7 @@ export class EstablishmentComponent implements OnInit {
   }
 
   modifyPlace(place_id, place_name, place_description){
-    this.apiService.modifyPlace(place_id, place_name, place_description, this.cookieService.get("web_user_id"))
+    this.apiService.modifyPlace(place_id, place_name, place_description, environment.decryptData(this.cookieService.get("web_user_id")))
     .subscribe(
       data => {
         window.location.href = '/establishment'
@@ -89,8 +89,7 @@ export class EstablishmentComponent implements OnInit {
 
   showPlace(): void {
     this.showTable = true;
-    console.log(this.cookieService.get("web_user_id"));
-    this.apiService.listPlace(this.cookieService.get("web_user_id"))
+    this.apiService.listPlace(environment.decryptData(this.cookieService.get("web_user_id")))
       .subscribe(
         data => {
           this.places = data
@@ -99,7 +98,6 @@ export class EstablishmentComponent implements OnInit {
           console.log("error listing place")
         }
       )
-
   }
 
   generateQrCode(id, name, description): void {

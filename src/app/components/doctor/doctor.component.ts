@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
@@ -28,7 +28,7 @@ export class DoctorComponent implements OnInit {
 
   generateQrCode() {
     this.currentDate = this.pipe.transform(Date.now(), 'yyyy-MM-dd HH:mm:ss.000000000')    
-    this.qrdata = "statut: 'covid', id:'" + this.cookieService.get("web_user_id") + "', date: '" + this.currentDate +"'";
+    this.qrdata = "statut: 'covid', id:'" + environment.decryptData(this.cookieService.get("web_user_id")) + "', date: '" + this.currentDate +"'";
     this.generatePdf();
   }
 

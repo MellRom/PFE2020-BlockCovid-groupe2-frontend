@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IWebUser } from 'src/app/models/webUser';
 import { ApiService } from 'src/app/services/api/api.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,12 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./inscription.component.css']
 })
 export class InscriptionComponent implements OnInit {
-  modelWebUser: IWebUser = {
-    id: '',
-    name: '',
-    login: '',
-    password: ''
-  };
+
 
   inscriptionForm: FormGroup;
   submitted = false;
